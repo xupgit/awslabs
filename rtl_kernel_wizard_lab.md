@@ -16,9 +16,7 @@ After completing this lab, you will be able to:
 
 This lab is separated into steps that consist of general overview statements that provide information on the detailed instructions that follow. Follow these detailed instructions to progress through the lab.
 
-This lab comprises four primary steps: You will create an SDAccel project. Use RTL Kernel project creation wizard, perform hardware emulation, build the full hardware and verify the functionality on F1.
-
-
+This lab comprises three primary steps: You will create an SDAccel project. Use RTL Kernel project creation wizard, perform hardware emulation, and verify the functionality on F1.  Appendix lists steps involved in building the full hardware.
 
 ## Step 1: Create an SDAccel Project
 ### 1.1. Source the SDAccel settings and create a directory called rtl\_kernel under _~/aws-fpga_. Change the directory to the newly created directory.
@@ -217,14 +215,14 @@ This will build the project including rtl\_kernel\_example.exe file under the Em
 ![alt tag](./images/Fig5-23.png)
 #### Figure 23. Timeline graph showing various activities in various region of the system
 
-## Step 4: Run the Application on F1        
-### 4.1. Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality.
-**4.1.1.** Change to the solution directory by executing the following command
+## Step 3: Run the Application on F1        
+### 3.1. Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality.
+**3.1.1.** Change to the solution directory by executing the following command
 
    ```
       cd /home/centos/sources/rtl_kernel_solution
    ```
-**4.1.2.** Run the following commands to load the AFI and execute the application to verify the functionality
+**3.1.2.** Run the following commands to load the AFI and execute the application to verify the functionality
 
    ```
       sudo sh
@@ -232,26 +230,30 @@ This will build the project including rtl\_kernel\_example.exe file under the Em
       ./rtl_kernel_example.exe xclbin/binary_container_1.awsxclbin
    ```
 
-**4.1.3.** The FPGA bitstream will be downloaded and the host application will be executed showing output something like:
+**3.1.3.** The FPGA bitstream will be downloaded and the host application will be executed showing output something like:
 
 ![alt tag](./images/Fig5-24.png)
 #### Figure 24. Execution output
 
-**4.1.4.** Enter exit in the teminal window to exit out of sudo shell
+**3.1.4.** Enter exit in the teminal window to exit out of sudo shell
 
-**4.1.5.** Close the SDx by selecting **File &gt; Exit**
+**3.1.5.** Close the SDx by selecting **File &gt; Exit**
+
+## Conclusion
+
+In this lab, you used the RTL Kernel wizard to create a sample adder application. You saw that the wizard creates an RTL IP with the specified number of AXI master ports. You performed HW emulation and analyzed the application timeline. You finally ran the application on an AWS F1 instance and validated the functionality.
 
 ## Appendix: Build Full Hardware 
-### 3.1. Set the build configuration to System and build the system (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
-**3.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; System** r click on the drop-down button of _Active build configuration_ and select **System**
+### A.1. Set the build configuration to System and build the system (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
+**A.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; System** r click on the drop-down button of _Active build configuration_ and select **System**
 
-**3.1.2.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
+**A.1.2.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
 
 This will build the project under the **System** directory. The built project will include rtl\_kernel\_example.exe file along with binary\_container\_1.xclbin file
 
 This step takes about two hours
 
-### 3.2. Create an Amazon FPGA Image (AFI)
+### A.2. Create an Amazon FPGA Image (AFI)
 
 To execute the application on F1, the following files are needed:
 
@@ -261,21 +263,21 @@ To execute the application on F1, the following files are needed:
 
 The xclbin and the host applications are already generated by the System configuration step
 
-**3.2.1.** Create a **xclbin** directory under the _rtl\_kernel\_example_ directory using the File Explorer
+**A.2.1.** Create a **xclbin** directory under the _rtl\_kernel\_example_ directory using the File Explorer
 
    ```
       cd /home/centos/aws-fpga/rtl_kernel
       mkdir xclbin
    ```
-**3.2.2.** Copy the generated **xclbin** file ( **binary\_container\_1.xclbin** ) and the host application (rtl\_kernel\_example.exe) from the **System** folder into the created **xclbin** directory, using the following commands
+**A.2.2.** Copy the generated **xclbin** file ( **binary\_container\_1.xclbin** ) and the host application (rtl\_kernel\_example.exe) from the **System** folder into the created **xclbin** directory, using the following commands
 
    ```
       cd xclbin
       cp /home/centos/aws-fpga/rtl_kernel/rtl_kernel_example/System/binary_container_1.xclbin .
       cp /home/centos/aws-fpga/rtl_kernel/rtl_kernel_example/System/rtl_kernel_example.exe .
    ```
-### 3.3. Create an AFI by running the create\_sdaccel\_afi.sh script and wait for the completion of the AFI creation process
-**3.3.1.** Enter the following command to generate the AFI:
+### A.3. Create an AFI by running the create\_sdaccel\_afi.sh script and wait for the completion of the AFI creation process
+**A.3.1.** Enter the following command to generate the AFI:
 
    ```
       $SDACCEL_DIR/tools/create_sdaccel_afi.sh –xclbin=binary_container_1.xclbin –s3_bucket=<bucket-name> -s3_dcp_key=<dcp-folder-name> -s3_logs_key=<logs-folder-name>
@@ -288,12 +290,12 @@ The create\_sdaccel\_afi.sh script does the following:
 - Generates a \_afi\_id.txt which contains the FPGA Image Identifier (or AFI ID) and Global FPGA Image Identifier (or AGFI ID) of the generated AFIs
 - Creates the \*.awsxclbin AWS FPGA binary file which will need to be read by the host application to determine which AFI should be loaded in the FPGA.
 
-**3.3.2.** Enter the following command to note the values of the AFI IDs by opening the \_afi\_id.txt file.
+**A.3.2.** Enter the following command to note the values of the AFI IDs by opening the \_afi\_id.txt file.
 
    ```
       cat *afi_id.txt
    ```
-**3.3.3.** Enter the **describe-fpga-images** API command to check the status of the AFI generation process:
+**A.3.3.** Enter the **describe-fpga-images** API command to check the status of the AFI generation process:
 
 **aws ec2 describe-fpga-images --fpga-image-ids &lt;AFI ID&gt;**
 
@@ -308,31 +310,5 @@ Note: When AFI creation completes successfully, the output should contain:
       ...
    ```
 
-**3.3.4.** Wait until the AFI becomes available before proceeding to execute on the F1 instance.
-## Step 4: Run the Application on F1        
-### 4.1. Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality.
-**4.1.1.** Change to the solution directory by executing the following command
+**A.3.4.** Wait until the AFI becomes available before proceeding to execute on the F1 instance.
 
-   ```
-      cd /home/centos/sources/rtl_kernel_solution
-   ```
-**4.1.2.** Run the following commands to load the AFI and execute the application to verify the functionality
-
-   ```
-      sudo sh
-      source /opt/Xilinx/SDx/2017.1.rte/setup.sh
-      ./rtl_kernel_example.exe xclbin/binary_container_1.awsxclbin
-   ```
-
-**4.1.3.** The FPGA bitstream will be downloaded and the host application will be executed showing output something like:
-
-![alt tag](./images/Fig5-24.png)
-#### Figure 24. Execution output
-
-**4.1.4.** Enter exit in the teminal window to exit out of sudo shell
-
-**4.1.5.** Close the SDx by selecting **File &gt; Exit**
-
-## Conclusion
-
-In this lab, you used the RTL Kernel wizard to create a sample adder application. You saw that the wizard creates an RTL IP with the specified number of AXI master ports. You performed HW emulation and analyzed the application timeline. You finally ran the application on an AWS F1 instance and validated the functionality.
