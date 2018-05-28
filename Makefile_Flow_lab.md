@@ -116,6 +116,15 @@ The host application will then be compiled, the xclbin file will be generated an
 
 In this lab, you used a Makefile flow to perform CPU and HW emulations. You then ran the application on F1 and validated the functionality.
 
+---------------------------------------
+
+<p align="center"><b>
+Start the next lab: <a href="GUI_Flow_lab.md">3. GUI Flow lab</a>
+</b></p>
+
+---------------------------------------
+
+
 ## Appendix: Build System Hardware using Makefile Flow        
 
 ### A.1. Build the system hardware using the Makefile flow (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
