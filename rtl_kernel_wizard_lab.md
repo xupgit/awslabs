@@ -20,7 +20,7 @@ This lab comprises four primary steps: You will create an SDAccel project. Use R
 
 
 
-## Stop 1: Create an SDAccel Project
+## Step 1: Create an SDAccel Project
 ### 1.1. Source the SDAccel settings and create a directory called rtl\_kernel under _~/aws-fpga_. Change the directory to the newly created directory.
 **1.1.1.** Execute the following commands in a terminal window to source the required environment settings:
 
