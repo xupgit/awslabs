@@ -45,6 +45,7 @@ If you had not used the link you may be directed to the AWS standard login page
 Enter xilinx-aws-f1-developer-labs in the Email address field and click **Next** to see the login page similar to shown in **Figure 1**
 
 **1.1.3.** Enter _userxx_ in the **IAM user name** field and enter the provided password in the **Password** field
+
 **1.1.4.** Click **Sign In**
 ### 1.2. Make sure to select N. Virginia (or instructor indicated region) as the region and start the instance
 **1.2.1.** In the top right corner, using the drop-down button, select a region with F1 instances, such as **N. Virginia** (**US East)**
