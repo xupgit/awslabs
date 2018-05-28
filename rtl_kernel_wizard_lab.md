@@ -277,8 +277,8 @@ Note: When AFI creation completes successfully, the output should contain:
 
    ```
       ...
-      &quot;State&quot;: {
-      &quot;Code&quot;: &quot;available&quot;
+      "State": {
+          "Code": "available"
       },
       
       ...
