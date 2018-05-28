@@ -435,6 +435,15 @@ Note: system tasks might slow down communication between the application and the
 
 In this lab, you used SDAccel IDE to create a project and added a kernel function. After identifying the kernel you performed CPU and hardware emulations. You analyzed various generated reports and then you optimized kernel code using DATAFLOW and host code by increasing the number of read, write, and run tasks to improve throughput and data transfer rates. You then validated the functionality on F1.
 
+---------------------------------------
+
+<p align="center"><b>
+Start the next lab: <a href="rtl_kernel_wizard_lab.md">5. RTL-Kernel Wizard Lab</a>
+</b></p>
+
+---------------------------------------
+
+
 ## Appendix Build Full Hardware 
 ### A.1. Set the build configuration to System and build the system (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
 **A.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; System** r click on the drop-down button of _Active build configuration_ and select **System**
