@@ -217,7 +217,31 @@ This will build the project including rtl\_kernel\_example.exe file under the Em
 ![alt tag](./images/Fig5-23.png)
 #### Figure 23. Timeline graph showing various activities in various region of the system
 
-## Step 3: Build Full Hardware 
+## Step 4: Run the Application on F1        
+### 4.1. Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality.
+**4.1.1.** Change to the solution directory by executing the following command
+
+   ```
+      cd /home/centos/sources/rtl_kernel_solution
+   ```
+**4.1.2.** Run the following commands to load the AFI and execute the application to verify the functionality
+
+   ```
+      sudo sh
+      source /opt/Xilinx/SDx/2017.1.rte/setup.sh
+      ./rtl_kernel_example.exe xclbin/binary_container_1.awsxclbin
+   ```
+
+**4.1.3.** The FPGA bitstream will be downloaded and the host application will be executed showing output something like:
+
+![alt tag](./images/Fig5-24.png)
+#### Figure 24. Execution output
+
+**4.1.4.** Enter exit in the teminal window to exit out of sudo shell
+
+**4.1.5.** Close the SDx by selecting **File &gt; Exit**
+
+## Appendix: Build Full Hardware 
 ### 3.1. Set the build configuration to System and build the system (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
 **3.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; System** r click on the drop-down button of _Active build configuration_ and select **System**
 
