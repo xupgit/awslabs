@@ -1,10 +1,10 @@
 # Connecting to AWS
 
-##Introduction
+## Introduction
 
 This lab guides you through the steps involved in connecting to an AWS EC2 F1 instance, and starting and stopping the instance.
 
-##Objectives
+## Objectives
 
 After completing this lab, you will be able to:
 
@@ -14,7 +14,7 @@ After completing this lab, you will be able to:
 - Closing the RDP session
 - Stopping the instance
 
-##Procedure
+## Procedure
 
 This lab is separated into steps that consist of general overview statements that provide information on the detailed instructions that follow. Follow these detailed instructions to progress through the lab.
 
@@ -52,6 +52,7 @@ Enter xilinx-aws-f1-developer-labs in the Email address field and click **Next**
 If you select different region other then where the accounts are created for then you may not see your instance as well as the source files which are pre-loaded for the workshop.
 
 **1.2.2.** Click on the **EC2** link on the dashboard or if not visible, then click on the _Services_ drop-down button and then click on **EC2**
+
 ![alt tag](./images/Fig1-4-1.png)   ![alt tag](./images/Fig1-4-2.png)
 ### Figure 4. Accessing EC2 service
 
