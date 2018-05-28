@@ -23,9 +23,9 @@ This lab comprises of three primary steps: You will login into an AWS and start 
 ## Step 1: Login into the AWS and starting an F1 instance
 
 #### Each registered participant has been allocated a preconfigured EC2 F1 instance and should have received an email with the following details:
-**Account ID, 
-IAM username, 
-Link to access a preconfigured EC2 F1 instance**
+- Account ID, 
+- IAM username, 
+- Link to access a preconfigured EC2 F1 instance
 
 ### 1.1. Open a web browser and login into AWS EC2 F1 instance using the provided credentials
 **1.1.1.** Start a web browser session
@@ -42,7 +42,7 @@ If you had not used the link you may be directed to the AWS standard login page
 ![alt tag](./images/Fig1-2.png)
 #### Figure 2. Entering credentials manually
 
-Enter xilinx-aws-f1-developer-labs in the Email address field and click **Next** to see the login page similar to shown in **Figure 1**
+Enter *xilinx-aws-f1-developer-labs* in the Email address field and click **Next** to see the login page similar to shown in **Figure 1**
 
 **1.1.3.** Enter _userxx_ in the **IAM user name** field and enter the provided password in the **Password** field
 
