@@ -172,6 +172,8 @@ In this lab, you learned how to connect to an AWS EC2 F1 instance, interact with
 Start the next lab: <a href="Makefile_Flow_lab.md">2. Makefile Flow</a>
 </b></p>
 
+---------------------------------------
+
 ## Appendix: Interacting with the Instance using Putty
 
 **A.1 Connect using PuTTY.**
