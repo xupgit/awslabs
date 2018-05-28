@@ -186,7 +186,7 @@ Notice the _binary\_container\_1_ is added to the project. Since the design has 
 ![alt tag](./images/Fig5-18.png)
 #### Figure 18. Adding binary container to the project
 
-**2.4.2.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** r click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
+**2.4.2.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** or click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
 
 ![alt tag](./images/Fig5-19.png)
 #### Figure 19. Selecting HW emulation build configuration
