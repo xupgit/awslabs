@@ -5,7 +5,7 @@
   </tr>
   <tr>
     <td width="20%" align="center"><b>Introduction</b></td>
-    <td width="20%" align="center"><a href="Connecting to AWS_lab.md">1. Connecting to your F1 instance</a></td> 
+    <td width="20%" align="center"><a href="Connecting_to_AWS_lab.md">1. Connecting to your F1 instance</a></td> 
     <td width="20%" align="center"><a href="Makefile_Flow_lab.md">2. Makefile Flow Lab</a></td>
     <td width="20%" align="center"><a href="GUI_Flow_lab.md">3. GUI Flow Lab</a></td>
     <td width="20%" align="center"><a href="Optimization_lab.md">4. Optimization Lab</a><td>
@@ -49,6 +49,6 @@ Since building FPGA binaries is not instantaneous, all the modules of this Devel
 ---------------------------------------
 
 <p align="center"><b>
-Start the next module: <a href="SETUP.md">1. Connecting to your F1 instance</a>
+Start the first lab: <a href="Connecting_to_AWS_lab.md.md">1. Connecting to your F1 instance</a>
 </b></p>
 
