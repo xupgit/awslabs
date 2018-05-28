@@ -195,47 +195,72 @@ Notice a multi-tab report window is opened. It has four tabs: the Top Operations
 ![alt tag](./images/Fig3-20.png)
 #### Figure 20. The system estimate report
 
-## Step 4: Build Full Hardware
-### 4.1. Set the build configuration to System and build the system (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
-**4.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; System** r click on the drop-down button of _Active build configuration_ and select **System**
+## Step 4: Run the Application on F1
+### 4.1. Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality.
+**4.1.1.** Change to the solution directory by executing the following command
 
-**4.1.2.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
+cd /home/centos/sources/gui\_flow\_solution
+
+**4.1.2.** Run the following commands to load the AFI and execute the application to verify the functionality
+
+**sudo sh**
+
+**source /opt/Xilinx/SDx/2017.1.rte/setup.sh**
+
+./gui\_flow\_example.exe xclbin/binary\_container\_1.awsxclbin
+
+**4.1.3.** The FPGA bitstream will be downloaded and the host application will be executed showing output something like:
+
+![alt tag](./images/Fig3-21-1.png)
+![alt tag](./images/Fig3-21-2.png)
+#### Figure 21. Execution output
+
+**4.1.4.** Enter exit in the teminal window to exit out of sudo shell.
+
+**4.1.5.** Close the SDx by selecting **File &gt; Exit**
+
+## Conclusion 
+
+In this lab, you used SDAccel IDE to create a project using one of the application templates. You then ran the design using the software emulation and hardware emulation flows, and reviewed the reports. You also read through the steps to generate the AFI. Since the system build and AFI creation takes over two hours, you used the provided solution to download the application and kernel on the F1 instance and validated the functionality.
+
+## Appendix: Build Full Hardware
+### A.1. Set the build configuration to System and build the system (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
+**A.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; System** r click on the drop-down button of _Active build configuration_ and select **System**
+
+**A.1.2.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
 
 This will build the project under the **System** directory. The built project will include gui\_flow\_example.exe file along with binary\_container\_1.xclbin file
 
 This step takes about two hours
 
-### 4.2. Create an Amazon FPGA Image (AFI).
+### A.2. Create an Amazon FPGA Image (AFI).
 
 To execute the application on F1, the following files are needed:
 
-Host application
-
-FPGA binary (xclbin)
-
-Amazon FPGA Image (awsxclbin)
+- Host application
+- FPGA binary (xclbin)
+- Amazon FPGA Image (awsxclbin)
 
 The xclbin and the host applications are already generated by the System configuration step
 
-**4.2.1.** Create a **xclbin** directory under the _GUI\_flow_ directory using the File Explorer
+**A.2.1.** Create a **xclbin** directory under the _GUI\_flow_ directory using the File Explorer
 
-cd /home/centos/aws-fpga/GUI\_flow
+   ```
+      cd /home/centos/aws-fpga/GUI\_flow
+      mkdir xclbin
+   ```
+**A.2.2.** Copy the generated **xclbin** file ( **binary\_container\_1.xclbin** ) and the host application (gui\_kernel\_example.exe) from the **System** folder into the created **xclbin** directory, using the following commands
 
-mkdir xclbin
-
-**4.2.2.** Copy the generated **xclbin** file ( **binary\_container\_1.xclbin** ) and the host application (gui\_kernel\_example.exe) from the **System** folder into the created **xclbin** directory, using the following commands
-
-cd xclbin
-
-cp /home/centos/aws-fpga/GUI\_flow/gui\_flow\_example/System/binary\_container\_1.xclbin .
-
-cp /home/centos/aws-fpga/GUI\_flow/gui\_flow\_example/System/gui\_flow\_example.exe .
-
-### 4.3. Create an AFI by running the create\_sdaccel\_afi.sh script and wait for the completion of the AFI creation process
-**4.3.1.** Enter the following command to generate the AFI:
-
-$SDACCEL\_DIR/tools/create\_sdaccel\_afi.sh –xclbin=binary\_container\_1.xclbin –s3\_bucket=&lt;bucket-name&gt; -s3\_dcp\_key=&lt;dcp-folder-name&gt; -s3\_logs\_key=&lt;logs-folder-name&gt;
-
+   ```
+      cd xclbin
+      cp /home/centos/aws-fpga/GUI_flow/gui_flow_example/System/binary_container_1.xclbin .
+      cp /home/centos/aws-fpga/GUI_flow/gui_flow_example/System/gui_flow_example.exe .
+   ```
+### A.3. Create an AFI by running the create\_sdaccel\_afi.sh script and wait for the completion of the AFI creation process
+**A.3.1.** Enter the following command to generate the AFI:
+   ```
+      $SDACCEL_DIR/tools/create_sdaccel_afi.sh –xclbin=binary_container_1.xclbin –s3_bucket=<bucket-name> -s3_dcp_key=<dcp-folder-name> -s3_logs_key=<logs-folder-name>
+   ```
 In the above command, &lt;bucket-name&gt;, &lt;dcp-folder-name&gt;, and &lt;logs-folder-name&gt; are the names you would have given when running CLI script.  In the workshop environment this was already done.
 
 The create\_sdaccel\_afi.sh script does the following:
@@ -244,52 +269,26 @@ The create\_sdaccel\_afi.sh script does the following:
 - Generates a \_afi\_id.txt which contains the FPGA Image Identifier (or AFI ID) and Global FPGA Image Identifier (or AGFI ID) of the generated AFIs
 - Creates the \*.awsxclbin AWS FPGA binary file which will need to be read by the host application to determine which AFI should be loaded in the FPGA.
 
-**4.3.2.** Enter the following command to note the values of the AFI IDs by opening the \_afi\_id.txt file.
+**A.3.2.** Enter the following command to note the values of the AFI IDs by opening the \_afi\_id.txt file.
 
-**cat \*afi\_id.txt**
+   ```
+      cat *afi_id.txt
+   ```
+**A.3.3.** Enter the **describe-fpga-images** API command to check the status of the AFI generation process:
 
-**4.3.3.** Enter the **describe-fpga-images** API command to check the status of the AFI generation process:
-
-**aws ec2 describe-fpga-images --fpga-image-ids &lt;AFI ID&gt;**
+   ```
+      aws ec2 describe-fpga-images --fpga-image-ids <AFI ID>
+   ```
 
 Note: When AFI creation completes successfully, the output should contain:
 
-**...**
+   ```
+      ...
+      "State": {
+          "Code": "available"
+      },
+      
+      ...
+   ```
+**A.3.4.** Wait until the AFI becomes available before proceeding to execute on the F1 instance.
 
-**&quot;State&quot;: {**
-
-**    &quot;Code&quot;: &quot;available&quot;**
-
-** },**
-
-**...**
-
-**4.3.4.** Wait until the AFI becomes available before proceeding to execute on the F1 instance.
-
-## Step 5: Run the Application on F1
-### 5.1. Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality.
-**5.1.1.** Change to the solution directory by executing the following command
-
-cd /home/centos/sources/gui\_flow\_solution
-
-**5.1.2.** Run the following commands to load the AFI and execute the application to verify the functionality
-
-**sudo sh**
-
-**source /opt/Xilinx/SDx/2017.1.rte/setup.sh**
-
-./gui\_flow\_example.exe xclbin/binary\_container\_1.awsxclbin
-
-**5.1.3.** The FPGA bitstream will be downloaded and the host application will be executed showing output something like:
-
-![alt tag](./images/Fig3-21-1.png)
-![alt tag](./images/Fig3-21-2.png)
-#### Figure 21. Execution output
-
-**5.1.4.** Enter exit in the teminal window to exit out of sudo shell.
-
-**5.1.5.** Close the SDx by selecting **File &gt; Exit**
-
-## Conclusion 
-
-In this lab, you used SDAccel IDE to create a project using one of the application templates. You then ran the design using the software emulation and hardware emulation flows, and reviewed the reports. You also read through the steps to generate the AFI. Since the system build and AFI creation takes over two hours, you used the provided solution to download the application and kernel on the F1 instance and validated the functionality.
