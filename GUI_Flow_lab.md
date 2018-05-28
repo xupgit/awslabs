@@ -39,19 +39,19 @@ An Eclipse launcher widow will appear asking to select a directory as workspace
 **1.2.2.** Click on the **Browse…** button, browse to **/home/centos/aws-fpga/GUI\_flow**, click **OK** twice
 
 ![alt tag](./images/Fig3-1.png)
-### Figure 1. Selecting a workspace
+#### Figure 1. Selecting a workspace
 
 The Xilinx SDx IDE window will be displayed
 
 ![alt tag](./images/Fig3-2.png)
-### Figure 2. The SDx IDE window
+#### Figure 2. The SDx IDE window
 
 **1.2.3.** Click on the **Add Custom Platform** on the _Welcome_ page
 
 **1.2.4.** Click on the **Add Custom Platform** button, browse to **/home/centos/aws-fpga/SDAccel/aws\_platfom/xilinx\_aws-vu9p-f1\_4ddr-xpr-2pr\_4\_0** , and click **OK**
 
 ![alt tag](./images/Fig3-3.png)
-### Figure 3. Hardware platform selected
+#### Figure 3. Hardware platform selected
 
 **1.2.5.** Click **Apply** and then click **OK**
 
@@ -68,12 +68,12 @@ Note the AWS-VU9P-F1 board is displayed as the hardware platform
 **1.2.10.** Select **Vector Addition** from the _Available Templates_ pane and click **Finish**
 
 ![alt tag](./images/Fig3-4.png)
-### Figure 4. Selecting an application template
+#### Figure 4. Selecting an application template
 
 The project IDE will be displayed with six main windows: Project Explorer, Project Settings, Reports, Outline, multi-tab console, and Emulation Console.
 
 ![alt tag](./images/Fig3-5.png)
-### Figure 5. Project IDE
+#### Figure 5. Project IDE
 
 ## Step 2: Perform CPU Emulation
 ### **2.1.** Select the function(s) that needs to be accelerated.
@@ -87,7 +87,7 @@ The project IDE will be displayed with six main windows: Project Explorer, Proje
 **2.1.4.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-CPU** r click on the drop-down button of _Active build configuration_ and select **Emulation-CPU**
 
 ![alt tag](./images/Fig3-6.png)
-### Figure 6. Selecting CPU emulation build configuration
+#### Figure 6. Selecting CPU emulation build configuration
 
 
 **2.1.5.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
@@ -99,7 +99,7 @@ This will build the project including gui\_flow\_example.exe file under the Emul
 The application will be run and the output will be displayed in the Console tab
 
 ![alt tag](./images/Fig3-7.png)
-### Figure 7. CPU Emulation run output
+#### Figure 7. CPU Emulation run output
 
 ## Step 3: Perform HW Emulation
 
@@ -111,7 +111,7 @@ The application will be run and the output will be displayed in the Console tab
 **3.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** r click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
 
 ![alt tag](./images/Fig3-8.png)
-### Figure 8. Selecting HW emulation build configuration
+#### Figure 8. Selecting HW emulation build configuration
 
 **3.1.2.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
 
@@ -124,35 +124,35 @@ This will build the project including gui\_flow\_example.exe file under the Emul
 If no argument was assigned then you would have to explicitly assigned the **xclbin** by clicking on the _Automatically add binary container(s) to arguments_, and click **Apply**
 
 ![alt tag](./images/Fig3-9.png)
-### Figure 9. Unpopulated Arguments tab
+#### Figure 9. Unpopulated Arguments tab
 
 **3.1.5.** Click **Run** to run the application
 
 **3.1.6.** The Console tab shows that the test was completed successfully along with the data transfer rate
 
 ![alt tag](./images/Fig3-10.png)
-### Figure 10. Hardware emulation run output
+#### Figure 10. Hardware emulation run output
 
 ### 3.2. Understand the HLS Report, profile summary, and Application Timeline.
 **3.2.1.** Double-click on the **HLS Report** entry under _Emulation-HW &gt; binary\_container\_1 &gt; krnl\_vadd_ in the _Reports_ view to open the report
 
 ![alt tag](./images/Fig3-11.png)
-### Figure 11. The Report view
+#### Figure 11. The Report view
 
 The multi-tab window will open showing the Synthesis report for krnl\_vadd accelerator.  It includes the target device information
 
 ![alt tag](./images/Fig3-12.png)
-### Figure 12. Multi-tab HLS synthesis report for krnl\_vadd accelerator
+#### Figure 12. Multi-tab HLS synthesis report for krnl\_vadd accelerator
 
 **3.2.2.** Scroll down the window and observe the timing, latency, and loop performance results. Observe that the target frequency is 250 MHz (4 ns period) and achieved period is 2.92 ns indicating that the timing has been met. Also note that the target initiation interval is set to 1 but achieved is 2, meaning it has not been met and indicated by red.
 
 ![alt tag](./images/Fig3-13.png)
-### Figure 13. Performance estimate results
+#### Figure 13. Performance estimate results
 
 **3.2.3.** Scroll further down and observe the resource utilization by the accelerator
 
 ![alt tag](./images/Fig3-14.png)
-### Figure 14. Resource utilization
+#### Figure 14. Resource utilization
 
 **3.2.4.** Scrolling down further shows the Interface summary indicating various ports, width, protocol that they are part of, type of object, and parameter type they belong to.
 
@@ -161,7 +161,7 @@ As can be seen, there are three interfaces being used: control, s\_axi, and m\_a
 ![alt tag](./images/Fig3-15-1.png)
 ![alt tag](./images/Fig3-15-2.png)
 ![alt tag](./images/Fig3-15-3.png)
-### Figure 15. Interface details showing ports, direction, size, protocol, object and data types
+#### Figure 15. Interface details showing ports, direction, size, protocol, object and data types
 
 ### 3.3. Review the profile summary report
 **3.3.1.** Double-click on the **Profile Summary** entry under _Emulation-HW &gt; gui\_flow\_example-Default_ in the _Reports_ tab
@@ -169,23 +169,23 @@ As can be seen, there are three interfaces being used: control, s\_axi, and m\_a
 Notice a multi-tab report window is opened. It has four tabs: the Top Operations, Kernels and Compute Units, the Data Transfers, and the OpenCL APIs. The Top Operations tab shows the device being used, the number of transfers (2112), average bytes per transfer (5.818), and the transfer efficiency. It also shows the kernel (krnl\_vadd) being used, the location of the kernel, beside the context ID.
 
 ![alt tag](./images/Fig3-16.png)
-### Figure 16. Top operation information in the profile summary
+#### Figure 16. Top operation information in the profile summary
 
 **3.3.2.** Click on the **Kernels &amp; Compute Units** tab and observe the number of Enqueues (1), the Global work size (1:1:1), the Local work size (1:1:1) and the number of calls to the kernel (1)
 
 ![alt tag](./images/Fig3-17.png)
-### Figure 17. Kernel and computer unit information in the profile summary
+#### Figure 17. Kernel and computer unit information in the profile summary
 
 **3.3.3.** Click on the **Data Transfers** tab and observe the number of read (1, result read), the number of write (2, two source operands being written), and the average size (4096 KB) between the host and memory. It also shows the number of read (2048, read data), the number write (64, write data), the transfer rates, and the average time.
 
 ![alt tag](./images/Fig3-18.png)
-### Figure 18. Data transfer information in the profile summary
+#### Figure 18. Data transfer information in the profile summary
 
 ### 3.4. Review the Application Timeline report
 **3.4.1.** Double-click on the **Application Timeline** entry in the _Reports_ tab, expand all entries in the timeline graph, zoom appropriately and observe the transactions. You will see when the kernel is running, when the write transaction takes place between host and global memory, when the read transactions are taking place between global memory and kernel memory, when the write transactions are taking place between the kernel and global memory, and when the read transaction is taking place between the global memory and host.
 
 ![alt tag](./images/Fig3-19.png)
-### Figure 19. Timeline graph showing various activities in various region of the system
+#### Figure 19. Timeline graph showing various activities in various region of the system
 
 ### 3.5. Review the System Estimate report.
 **3.5.1.** Double-click on the **System Estimate** entry under _Emulation-HW_ in the _Reports_ tab
@@ -193,7 +193,7 @@ Notice a multi-tab report window is opened. It has four tabs: the Top Operations
 **3.5.2.** The report shows the estimated frequency and the resource utilization for the given kernel (krnl\_vadd)
 
 ![alt tag](./images/Fig3-20.png)
-### Figure 20. The system estimate report
+#### Figure 20. The system estimate report
 
 ## Step 4: Build Full Hardware
 ### 4.1. Set the build configuration to System and build the system (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
@@ -284,7 +284,7 @@ cd /home/centos/sources/gui\_flow\_solution
 
 ![alt tag](./images/Fig3-21-1.png)
 ![alt tag](./images/Fig3-21-2.png)
-### Figure 21. Execution output
+#### Figure 21. Execution output
 
 **5.1.4.** Enter exit in the teminal window to exit out of sudo shell.
 
