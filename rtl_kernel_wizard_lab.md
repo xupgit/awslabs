@@ -267,7 +267,7 @@ The create\_sdaccel\_afi.sh script does the following:
 **3.3.2.** Enter the following command to note the values of the AFI IDs by opening the \_afi\_id.txt file.
 
    ```
-      cat \*afi_id.txt
+      cat *afi_id.txt
    ```
 **3.3.3.** Enter the **describe-fpga-images** API command to check the status of the AFI generation process:
 
