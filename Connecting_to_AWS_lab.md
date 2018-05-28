@@ -33,12 +33,12 @@ Account ID, IAM username, Link to access a preconfigured EC2 F1 instance
 If you had used the link then you should see a login page similar to shown here:
 
 ![alt tag](./images/Fig1-1.png)
-### Figure 1. Login page accessed through the provided link
+#### Figure 1. Login page accessed through the provided link
 
 If you had not used the link you may be directed to the AWS standard login page
 
 ![alt tag](./images/Fig1-2.png)
-### Figure 2. Entering credentials manually
+#### Figure 2. Entering credentials manually
 
 Enter xilinx-aws-f1-developer-labs in the Email address field and click **Next** to see the login page similar to shown in **Figure 1**
 
@@ -47,41 +47,41 @@ Enter xilinx-aws-f1-developer-labs in the Email address field and click **Next**
 ### 1.2. Make sure to select N. Virginia (or instructor indicated region) as the region and start the instance
 **1.2.1.** In the top right corner, using the drop-down button, select a region with F1 instances, such as **N. Virginia** (**US East)**
 ![alt tag](./images/Fig1-3.png)
-### Figure 3. Selecting region
+#### Figure 3. Selecting region
 
 If you select different region other then where the accounts are created for then you may not see your instance as well as the source files which are pre-loaded for the workshop.
 
 **1.2.2.** Click on the **EC2** link on the dashboard or if not visible, then click on the _Services_ drop-down button and then click on **EC2**
 
 ![alt tag](./images/Fig1-4-1.png)   ![alt tag](./images/Fig1-4-2.png)
-### Figure 4. Accessing EC2 service
+#### Figure 4. Accessing EC2 service
 
 **1.2.3.** Click on the **Instances** link on the left panel
 
 ![alt tag](./images/Fig1-5.png)
-### Figure 5. Accessing Instances
+#### Figure 5. Accessing Instances
 
 You may see several instances
 
 **1.2.4.** Enter your username in the filter field just below the **Launch Instance** button and hit enter
 ![alt tag](./images/Fig1-6.png)
-### Figure 6. Filtering your instance
+#### Figure 6. Filtering your instance
 
 **1.2.5.** Making sure that your instance is selected, click on the **Actions &gt; Instance State &gt; Start**
 ![alt tag](./images/Fig1-7.png)
-### Figure 7. Starting an instance
+#### Figure 7. Starting an instance
 
 **1.2.6.** Click on the refresh button ( ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAAIoAAAAlCAIAAAASr+YIAAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAACQNJREFUaEPt2teLVFsWBvBpc8455+xVx5wVsxjxbZB598EnH0QRVBBF/wEf1HkZGVEQFXRExTQoZsw55+yYc5jf7Q1F36rq6urbp+warP3QnHNq77PXXt9a3/r2Pp3348ePv+RatnqgTLYalrPrdw/k4MnqOMjBk4Mnqz2Q1cblFZQGTyaN+fnGNti66+dP+v8yY47cshqpHDxZDU9ycvsJhBMj0sjn+v79+8aNG2/evMnxrVu3njFjRpkypROFb968efz48d27dx89evT8+XO3TKpevXrdunUbNWrUvHnzhg0buk0RIH8SHhXr27dv/81vnz59sv4qVaqYrFKlSmn6InPwMGzBggUXLlyw7C5duixZsqRs2bI/OUeECFSuXLly+fLl27dvv3jx4tWrV+/fv2cGR9WsWbNOnTotW7bs2LFjhw4d4FSY0/4MPKa5f//+qVOnTG/Wr1+/5uXlAaZZs2Y9e/Zs3769uYsEKUJ4xMrr169FKDOs/OPHj8uWLbt16xZftGrVat68eWxjp25itkaNGrplFC3xKmn27dt3+vRp2Jg66XRMhVCPHj1GjBghsitWrJjYrdjwPH369Pz588eOHRMXQOILkWLBIhQqYqFbt25AEhepEYoQni9fvhw8eBChlStXrnfv3mjk8OHD0tpqa9euPWDAAGRy4sQJYYToBg8eXL58+czBwxv37t3bvn37zp07BY2JgnPYxiGuA/EwRk/XwmXs2LETJkwQ3IkeKzY8Fy9e3LZt2+7du80hTy3V3KYx34cPHyRWvXr1hMP06dMbN26cAqEI4Xn37t38+fOvXbsWkphhLPGXa9hWuXJlf4URI9u1a7d06dKqVatmDh7psn///i1btrx9+xYAodj8lt+QmKnZhnXEt/xWjbioWrVqU6dOHT58uGSKM6zsokWLYo/e/euf4brq3/5e2AJCDspfvhg4cOCgQYP69u3btWtXr7b+ly9fClsZxmVySMgUxiTpzJWmEz9//rxp0yZTg4RhbmObORduPfSTVqFChYkTJ/qb5puL2427EZpUvnPnTrChQYMG/CM/YAMYDRgeYl32SHRxw7yQ6J7HUVy68IR1glq6ILHO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)
 ) to see the updated status to _Running_
 ) to see the updated status to _Running_
 ![alt tag](./images/Fig1-8.png)
 
-### Figure 8. Running state
+#### Figure 8. Running state
 
 **1.2.7.** Make a note of the Public DNS and IPv4 Public IP which will be used by PuTTy and Remote Desktop (RDP)
 ![alt tag](./images/Fig1-9.png)
 
-### Figure 9. Assigned IP to the running instance
+#### Figure 9. Assigned IP to the running instance
 
 ## Step 2: Interacting with the Instance
 
@@ -95,7 +95,7 @@ You may see several instances
 
 Make sure that SSH is selected as the Connection type
 ![alt tag](./images/Fig1-10.png)
-### Figure 10. Session settings in PuTTY
+#### Figure 10. Session settings in PuTTY
 
 **2.1.3.** Expand **SSH** under the _Connection_ in the left panel and click **Auth**
 
@@ -106,14 +106,14 @@ If you don&#39;t have the private key file (as in workshop) you can skip this st
 **2.1.5.** Click **Open**
 
 ![alt tag](./images/Fig1-11.png)
-### Figure 11. Selecting private key file
+#### Figure 11. Selecting private key file
 
 **2.1.6.** Click **Yes**
 
 The PuTTY window will open. It will ask for the password (in case of the workshop). Enter the provided password
 
 ![alt tag](./images/Fig1-12.png)
-### Figure 12. The PuTTY window showing the connection
+#### Figure 12. The PuTTY window showing the connection
 
 **2.1.7.** Set password for the RDP connection by entering sudo passwd &lt;your choice of password&gt; command. You will use the same password in the RDP connection.
 
@@ -128,24 +128,24 @@ The PuTTY window will open. It will ask for the password (in case of the worksho
 **2.2.3.** Click on the **Show Options**
 
 ![alt tag](./images/Fig1-13.png)
-### Figure 13. Entering the IPv4 address
+#### Figure 13. Entering the IPv4 address
 
 **2.2.4.** Select the **Display** tab and select _True Color (24 bit)_ and click **Connect**
 
 ![alt tag](./images/Fig1-14.png)
-### Figure 14. Selecting resolution and connecting
+#### Figure 14. Selecting resolution and connecting
 
 **2.2.5.** A certificate warning will be displayed. Click **Yes** to open the RDP session
 
 **2.2.6.** Enter centos as the username and enter the provided password and click OK
 
 ![alt tag](./images/Fig1-15.png)
-### Figure 15. Entering username and password
+#### Figure 15. Entering username and password
 
 **2.2.7.** The desktop will be showed up
 
 ![alt tag](./images/Fig1-16.png)
-### Figure 16. The RDP desktop
+#### Figure 16. The RDP desktop
 
 **2.2.8.** Right-click on the desktop and select **Open Terminal** to open a window
 
@@ -170,12 +170,12 @@ The PuTTY window will open. It will ask for the password (in case of the worksho
  **3.1.2.** A window will show up showing settings, lock, and power off buttons. Click on the Power OFF button
 
 ![alt tag](./images/Fig1-17.png)
-### Figure 17. Power OFF window
+#### Figure 17. Power OFF window
 
 **3.1.3.** Click on the **Power Off** option
 
 ![alt tag](./images/Fig1-18.png)
-### Figure 18. Powering OFF the RDP connection
+#### Figure 18. Powering OFF the RDP connection
 
 **3.1.4.** Enter the password to complete the process
 
@@ -183,13 +183,13 @@ The PuTTY window will open. It will ask for the password (in case of the worksho
 
 ![alt tag](./images/Fig1-19-1.png)   ![alt tag](./images/Fig1-19-2.png)
 
-### Figure 19. Instance Status
+#### Figure 19. Instance Status
 
 **3.1.6.** Once the instance is stopped, sign out by clicking on the drop-down button on the top bar and selecting Sign Out
 
 ![alt tag](./images/Fig1-20.png)
 
-### Figure 20. Signing out
+#### Figure 20. Signing out
 
 ## Conclusion
 
