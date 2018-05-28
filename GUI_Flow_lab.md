@@ -17,7 +17,7 @@ After completing this lab, you will be able to:
 
 This lab is separated into steps that consist of general overview statements that provide information on the detailed instructions that follow. Follow these detailed instructions to progress through the lab.
 
-This lab comprises five primary steps: You will create an SDAccel project using one of the standard application templates. You will perform CPU emulation to validate application then perform HW emulation to see how much acceleration is possible. Next you will build the hardware to generate the bitstream and finally download the bitstream on F1 and validate application execution.
+This lab comprises four primary steps: You will create an SDAccel project using one of the standard application templates. You will perform CPU emulation to validate application then perform HW emulation to see how much acceleration is possible. Next you will  download the bitstream on F1 and validate application execution. Appendix lists steps involved in building the full hardware.
 
 ## Step 1: Create an SDAccel Project        
 ### 1.1. Source the SDAccel settings and create a directory called GUI\_flow under _~/aws-fpga_. Change the directory to the newly created directory.
