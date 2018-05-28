@@ -224,6 +224,15 @@ Notice a multi-tab report window is opened. It has four tabs: the Top Operations
 
 In this lab, you used SDAccel IDE to create a project using one of the application templates. You then ran the design using the software emulation and hardware emulation flows, and reviewed the reports. You also read through the steps to generate the AFI. Since the system build and AFI creation takes over two hours, you used the provided solution to download the application and kernel on the F1 instance and validated the functionality.
 
+---------------------------------------
+
+<p align="center"><b>
+Start the next lab: <a href="Optimization_lab.md">4. Optimization Lab</a>
+</b></p>
+
+---------------------------------------
+
+
 ## Appendix: Build Full Hardware
 ### A.1. Set the build configuration to System and build the system (Note that since the building of the project takes over two hours skip this step in the workshop environment and move to next step).
 **A.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; System** r click on the drop-down button of _Active build configuration_ and select **System**
