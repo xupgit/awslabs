@@ -49,6 +49,6 @@ Since building FPGA binaries is not instantaneous, all the modules of this Devel
 ---------------------------------------
 
 <p align="center"><b>
-Start the first lab: <a href="Connecting_to_AWS_lab.md.md">1. Connecting to your F1 instance</a>
+Start the first lab: <a href="Connecting_to_AWS_lab.md">1. Connecting to your F1 instance</a>
 </b></p>
 
