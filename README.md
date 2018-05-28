@@ -1,7 +1,7 @@
 # awslabs
 <table style="width:100%">
   <tr>
-    <th width="100%" colspan="5"><h2>XUP AWS F1 Labs</h2></th>
+    <th width="100%" colspan="6"><h2>XUP AWS F1 Labs</h2></th>
   </tr>
   <tr>
     <td width="15%" align="center"><b>Introduction</b></td>
