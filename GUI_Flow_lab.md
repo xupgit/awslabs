@@ -24,15 +24,11 @@ This lab comprises five primary steps: You will create an SDAccel project using 
 **1.1.1.** Execute the following commands in a terminal window to source the required Xilinx tools:
 
    ```
-      cd ~/aws-fpga	
-	  
-      source sdaccel_setup.sh	
-	  
-      source $XILINX_SDX/settings64.sh
-	  
-	  mkdir GUI_flow
-	  
-	  cd GUI_flow
+      cd ~/aws-fpga		  
+      source sdaccel_setup.sh		  
+      source $XILINX_SDX/settings64.sh	  
+      mkdir GUI_flow	  
+      cd GUI_flow
    ```
 
 ### 1.2. Launch SDx, create a workspace and create a project, called _GUI\_flow_, using the _Empty Application_ template...
