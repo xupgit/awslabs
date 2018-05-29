@@ -126,7 +126,7 @@ You may see several instances
 
 ### 3.1. Shut down the RDP instance using the top Power OFF button.
 
-**3.1.1.** Click on the Power OFF button ![alt tag](./images/Fig1-power.png) located on the top right corner
+**3.1.1.** Click on the Power OFF button ![alt tag](./images/Fig1-stop.png) located on the top right corner
 
 **3.1.2.** A window will show up showing settings, lock, and power off buttons. Click on the Power OFF button
 ![alt tag](./images/Fig1-17.png)
