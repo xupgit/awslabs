@@ -94,6 +94,7 @@ You may see several instances
 **2.1.2.** Enter the _IPv4_ address
 
 **2.1.3.** Click on the **Show Options**
+
 ![alt tag](./images/Fig1-13.png)
 #### Figure 10. Entering the IPv4 address
 
