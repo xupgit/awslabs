@@ -94,7 +94,7 @@ The project IDE will be displayed with six main windows: Project Explorer, Proje
 
 This will build the project including gui\_flow\_example.exe file under the Emulation-CPU directory
 
-**2.1.6.** Run the application by clicking the Run button ((![alt tag](./images/Fig3-run.png)))
+**2.1.6.** Run the application by clicking the Run button (![alt tag](./images/Fig3-run.png))
 
 The application will be run and the output will be displayed in the Console tab
 
