@@ -17,7 +17,7 @@ After completing this lab, you will be able to:
 
 This lab is separated into steps that consist of general overview statements that provide information on the detailed instructions that follow. Follow these detailed instructions to progress through the lab.
 
-This lab comprises four primary steps: You will create an SDAccel project using one of the standard application templates. You will perform CPU emulation to validate application then perform HW emulation to see how much acceleration is possible. Next you will  download the bitstream on F1 and validate application execution. Appendix lists steps involved in building the full hardware.
+This lab comprises four primary steps: You will create an SDAccel project using one of the standard application templates. You will perform CPU emulation to validate application then perform HW emulation to see how much acceleration is possible. Next you will  download the bitstream on F1 and validate application execution. The Appendix section lists steps involved in building the full hardware.
 
 ## Step 1: Create an SDAccel Project        
 ### 1.1. Source the SDAccel settings and create a directory called GUI\_flow under _~/aws-fpga_. Change the directory to the newly created directory.
@@ -31,8 +31,8 @@ This lab comprises four primary steps: You will create an SDAccel project using 
       cd GUI_flow
    ```
 
-### 1.2. Launch SDx, create a workspace and create a project, called _GUI\_flow_, using the _Empty Application_ template...
-**1.2.1.** Launch SDAccel by executing sdx in the terminal window
+### 1.2. Launch SDx, create a workspace and create a project, called _GUI\_flow_, using the _Vector Addition_ template...
+**1.2.1.** Launch SDAccel by executing **sdx** in the terminal window
 
 An Eclipse launcher widow will appear asking to select a directory as workspace
 
@@ -46,7 +46,7 @@ The Xilinx SDx IDE window will be displayed
 ![alt tag](./images/Fig3-2.png)
 #### Figure 2. The SDx IDE window
 
-**1.2.3.** Click on the **Add Custom Platform** on the _Welcome_ page
+**1.2.3.** Click on the **Add Custom Platform** link on the _Welcome_ page
 
 **1.2.4.** Click on the **Add Custom Platform** button, browse to **/home/centos/aws-fpga/SDAccel/aws\_platfom/xilinx\_aws-vu9p-f1\_4ddr-xpr-2pr\_4\_0** , and click **OK**
 
@@ -78,23 +78,23 @@ The project IDE will be displayed with six main windows: Project Explorer, Proje
 ## Step 2: Perform CPU Emulation
 ### **2.1.** Select the function(s) that needs to be accelerated.
 
-**2.1.1.** Click on the _Add Hardware Function_ button icon ( ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gQQDQk2JGFc9QAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAB1klEQVQ4ja2UvW4TQRDHf7Oc3CSFSYMbpCA6Gj8AhRNRIwoeIQ9AQQEKH85ZygPwAC7yAHkARJGkSBUK3CCKICEhoRTIMhIK6Ly3f4r1+T5sRUbySKO71c789j9zc2u/rr1YoyVm68RBsmYeia1ZYnLTphk4wJlwFtdVC4JcRh5qCleDuYvnMP4EwODijP79Nnr8Ebdxj1BhOAOa7pqw8z3s8zvs6izC+qekXyewsY3UzJ2VUrhzEXjLVWCXRwCk3+tVHB4mgGr59ifL53NYKK8pq8D6/dOF1qTpDi/287JVf6ehBBoYwqEaDEBbXQajERDBaboDwMtXlS/S7CFSfL88gt/fUKdXnjwe0b9bV7f/Oiz0n8wHFT71ubzP5b2Xv/6p8OGJNGTu+ZehvPc6OEBTn6uaW7hlvih5pg5BNsG9f4SNY4lsbhN2j9FWdxZFEblgSbkNWgJTp0fYPYZWG6hGl6t6D608y5rKiqDzPcgmc0hz1Gpj1zxK3bczNcTnnR7h4RBat0vaDRYvB4GIn99GA8gm6MEzQvdNhJphLPmZl5iFIElCCriTp9BqR9DmNuVNZKx6K5k0A/44iSV3evNks9VBi0CVQ1AF/q+ZqqQ1mFsnDOAfrObxsWGuNgEAAAAASUVORK5CYII=)) in the **Hardware Functions** tab to see the functions defined in the design
+**2.1.1.** Click on the _Add Hardware Function_ button icon (![alt tag](./images/Fig3-hw_button.png)) in the **Hardware Functions** tab to see the functions defined in the design
 
 **2.1.2.** Notice the _kml\_vadd_ function is the only function in the design and is already marked to be accelerated
 
 **2.1.3.** Make sure the **project.sdx** under _gui\_flow\_example_ in the **Project Explorer** tab is selected
 
-**2.1.4.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-CPU** r click on the drop-down button of _Active build configuration_ and select **Emulation-CPU**
+**2.1.4.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-CPU** or click on the drop-down button of _Active build configuration_ and select **Emulation-CPU**
 
 ![alt tag](./images/Fig3-6.png)
 #### Figure 6. Selecting CPU emulation build configuration
 
 
-**2.1.5.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
+**2.1.5.** Either select **Project &gt; Build Project** or click on the build (![alt tag](./images/Fig3-build.png)) button
 
 This will build the project including gui\_flow\_example.exe file under the Emulation-CPU directory
 
-**2.1.6.** Run the application by clicking the Run button ( ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gQQDR8gzC1ccwAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAC0ElEQVRIie2VS2gTURSGv3tvGpu2NsG2WmssVq1Ca7W0ihYUfNSFIogIFUQ3goiuhAoqgq4EF4JVXCguxIWiIj4QEUQRtFqpXfgAxRfUGlO1IUlnkjQzk8m4KA1qkxqFuvKHs/rnnu/+Z+7cEf39QYdxlhxvAIDLGfcc/yoJjH+Uf5VkbOlGgssv7nDvfRd9kW+k0zYVJT5W1S5hc+Nayot9v4WIYPBzznk97n3O/tsnaJzjo2FWKf7JxZhWmmAozofPcTpffGPfim2sr1/+d0ke9z7n4N2TtLVWUVc5h1L3JN5FnwHgK3HTPNfNjKkeznRdxLAs2hpX54RkfSe6kWDPrWMsne9DIjCSknUztjPPu5KIZmRKIljRVMap7kt8in7JDXEc+LXO9dykusLDBJciqpvEEikAVtdsZE3NFrSYTVQ3ieompmlT6/dw/NGFUX1GKuu47r7voqJcEtGN4WQeM+O1TF9OqbuMjodHSaaSAJQUKp68fvln4wpEB7DtNBHdIKIb6AnrJ79+SgOHWg/jxktEN9ASJgXKxddYOH8IQDyRQotZaDGLxFBqlO/3+VlQuTDzTCptY9t21l5Zv/jyIh+OY+FSYngn8ue9mLbJkTsd3H/7ECUldtohbiSp8paTrV/WJMtqmogZKZQSKCWQUmS8cCJC+7UDPPjQmfGHLJvGabW5hpIdsrV5LXrcASFQSmYgveE+dl/dy9uBdyglUUoihGBAs9jZ0pYbku3I+b2VbFu0gWAoheMItOQg3R97aL++j1A8hJISJSVSSvrDJq2zltA8rS7nERaBQCDntXL6yRXO9txg5lQvEz0FCJHOeINxk7DmsNg/n4OtO3BJlTPJmBCANwO9dHSe52nfK4oLCykqcKMlh5hdNp1dLZtYXD1vrOX5QUZk2hahWBTbsSkr8lHkLsxnGZDHVT8ityqgyluRd+Mf9f/3+0f6Dhp1RNRlihttAAAAAElFTkSuQmCC))
+**2.1.6.** Run the application by clicking the Run button ((![alt tag](./images/Fig3-run.png)))
 
 The application will be run and the output will be displayed in the Console tab
 
@@ -107,13 +107,13 @@ The application will be run and the output will be displayed in the Console tab
 
 ### The HW Emulation flow is not cycle accurate, but provides more detailed profiling information than software emulation and can be used to do some analysis and optimization of the performance of the application.
 
-### 3.1. Select the Emulation-HW build configuration, and build the project.
-**3.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** r click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
+### 3.1. Select the Emulation-HW build configuration and build the project.
+**3.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** or click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
 
 ![alt tag](./images/Fig3-8.png)
 #### Figure 8. Selecting HW emulation build configuration
 
-**3.1.2.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
+**3.1.2.** Either select **Project &gt; Build Project** or click on the (![alt tag](./images/Fig3-build.png)) button
 
 This will build the project including gui\_flow\_example.exe file under the Emulation-HW directory
 
@@ -121,7 +121,7 @@ This will build the project including gui\_flow\_example.exe file under the Emul
 
 **3.1.4.** Click on the **Arguments** tab and notice that the _binary\_container\_1.xclbin_ is already assigned
 
-If no argument was assigned then you would have to explicitly assigned the **xclbin** by clicking on the _Automatically add binary container(s) to arguments_, and click **Apply**
+If no argument was assigned then you would have to explicitly assign the **xclbin** by clicking on the _Automatically add binary container(s) to arguments_, and click **Apply**
 
 ![alt tag](./images/Fig3-9.png)
 #### Figure 9. Unpopulated Arguments tab
@@ -188,7 +188,7 @@ Notice a multi-tab report window is opened. It has four tabs: the Top Operations
 #### Figure 19. Timeline graph showing various activities in various region of the system
 
 ### 3.5. Review the System Estimate report.
-**3.5.1.** Double-click on the **System Estimate** entry under _Emulation-HW_ in the _Reports_ tab
+**3.5.1.** Double-click on the **System Estimate** entry under the _Emulation-HW_ in the _Reports_ tab
 
 **3.5.2.** The report shows the estimated frequency and the resource utilization for the given kernel (krnl\_vadd)
 
@@ -216,7 +216,7 @@ Notice a multi-tab report window is opened. It has four tabs: the Top Operations
 ![alt tag](./images/Fig3-21-2.png)
 #### Figure 21. Execution output
 
-**4.1.4.** Enter exit in the teminal window to exit out of sudo shell.
+**4.1.4.** Enter **exit** in the teminal window to exit out of sudo shell.
 
 **4.1.5.** Close the SDx by selecting **File &gt; Exit**
 
@@ -253,7 +253,7 @@ To execute the application on F1, the following files are needed:
 
 The xclbin and the host applications are already generated by the System configuration step
 
-**A.2.1.** Create a **xclbin** directory under the _GUI\_flow_ directory using the File Explorer
+**A.2.1.** Create a **xclbin** directory under the _GUI\_flow_ directory using the following commands:
 
    ```
       cd /home/centos/aws-fpga/GUI_flow
@@ -279,7 +279,7 @@ The create\_sdaccel\_afi.sh script does the following:
 - Generates a \_afi\_id.txt which contains the FPGA Image Identifier (or AFI ID) and Global FPGA Image Identifier (or AGFI ID) of the generated AFIs
 - Creates the \*.awsxclbin AWS FPGA binary file which will need to be read by the host application to determine which AFI should be loaded in the FPGA.
 
-**A.3.2.** Enter the following command to note the values of the AFI IDs by opening the \_afi\_id.txt file.
+**A.3.2.** Enter the following command to note the values of the AFI IDs by opening the *\_afi\_id.txt file.
 
    ```
       cat *afi_id.txt
