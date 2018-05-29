@@ -15,13 +15,13 @@
 ---------------------------------------
 ### Introduction
 
-Welcome to the AWS F1 Xilinx Developer Labs. During this session you will gain hands-on experience with AWS F1 and learn how to develop accelerated applications using the AWS F1 OpenCL flow and the Xilinx SDAccel development environment.
+Welcome to the XUP AWS F1 Labs. During this session you will gain hands-on experience with AWS F1 and learn how to develop accelerated applications using the AWS F1 OpenCL flow and the Xilinx SDAccel development environment.
 
 #### Overview of the AWS F1 platform and SDAccel flow
 
 The architecture of the AWS F1 platform and the SDAccel development flow are pictured below:
 
-![](./images/introduction/f1_platform.png)
+![](./images/f1_platform.png)
 
 1. Amazon EC2 F1 is a compute instance combining x86 CPUs with Xilinx FPGAs. The FPGAs are programmed with custom hardware accelerators which can accelerate complex workloads up to 30x when compared with servers that use CPUs alone. 
 2. An F1 application consists of an x86 executable for the host application and an FPGA binary (also referred to as Amazon FPGA Image or AFI) for the custom hardware accelerators. Communication between the host application and the accelerators are automatically managed by the OpenCL runtime.
@@ -29,20 +29,22 @@ The architecture of the AWS F1 platform and the SDAccel development flow are pic
 4. The host application is written in C or C++ and uses the OpenCL API to interact with the accelerated functions. The accelerated functions (also referred to as kernels) can be written in C, C++, OpenCL or even RTL.
 
 
-#### Overview of the Xilinx Developer Lab modules
+#### Overview of the XUP AWS F1 Labs 
 
-This developer lab is divided in 4 modules. It is recommended to complete each module before proceeding to the next.
+This consists of five labs. It is recommended to complete each lab before proceeding to the next.
 
-1. **Connecting to your F1 instance** \
-You will start a pre-configured EC2 F1 instance and connect to it using a remote desktop client. Once connected, you will download the lab files and confirm you can execute a simple application on F1.
-1. **Experiencing F1 acceleration** \
-AWS F1 instances are ideal to accelerate complex workloads. In this module you will experience the potential of F1 by using FFmpeg to run both a software implementation and an F1-optimized implementation of an H.265/HEVC encoder. 
-1. **Developing and optimizing F1 applications with SDAccel** \
-You will use the SDAccel development environment to create, profile and optimize an F1 accelerator. The lab focuses on the Inverse Discrete Cosine Transform (IDCT), a compute intensive function used at the heart of all video codecs.
-1. **Wrap-up and next steps** \
-You will to close your RDP session, stop your F1 instance and explore next steps to continue your F1 experience after the Xilinx Developer Lab.
+1. **Connecting to Your F1 Instance** \
+You will start a pre-configured EC2 F1 instance and connect to it using a remote desktop client. 
+1. **Makefile Flow Lab** \
+This lab guides you through the steps involved in using a Makefile flow to build and perform CPU and hardware emulation to verify the functionality. You will then use an AWS F1 instance to validate the design. 
+1. **GUI Flow Lab** \
+This lab guides you through the steps involved in using a GUI flow to create an SDAccel project. After creating a project you will run CPU and hardware emulation to verify the functionality. You will then use an AWS F1 instance to validate the design on F1.
+1. **Optimization Lab** \
+This lab guides you through the steps involved in creating a project and adding a kernel function. After creating a project you will run CPU and hardware emulation to verify the functionality, analyze various generated reports and then apply techniques both on host and kernel side to improve throughput and data transfer rate.
+1. **RTL-Kernel Wizard Lab** \
+This lab guides you through the steps involved in using a RTL Kernel wizard to wrap a user RTL-based IP so the generated IP can be used in SDAccel project.
 
-Since building FPGA binaries is not instantaneous, all the modules of this Developer Lab will use precompiled FPGA binaries.
+Since building FPGA binaries is not instantaneous, all the labs will use precompiled FPGA binaries.
 
 ---------------------------------------
 
