@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab guides you through the steps involved in creating a project and adding a kernel function. After creating a project you will run CPU and hardware emulation to verify the functionality, analyze various generated reports and then apply techniques both on host and kernel side to improve throughput and data transfer rate.
+This lab guides you through the steps involved in creating a project and adding a kernel function. After creating a project you will run CPU and hardware emulations to verify the functionality, analyze various generated reports and then apply techniques both on host and kernel side to improve throughput and data transfer rate.
 
 ## Objectives
 
@@ -18,10 +18,10 @@ After completing this lab, you will be able to:
 
 This lab is separated into steps that consist of general overview statements that provide information on the detailed instructions that follow. Follow these detailed instructions to progress through the lab.
 
-This lab comprises six primary steps: You will create an SDAccel project, add a kernel function and perform CPU emulation to validate application, then perform HW emulation to see how much acceleration is possible. You will then optimize the kernel code to reduce the latency and improve the initiation interval followed by optimizing the code to improve data transfer rate. Next you will download the bitstream on F1 and validate application execution. Appendix lists steps involved in building the full hardware.
+This lab comprises six primary steps: You will create an SDAccel project, add a kernel function and perform CPU emulation to validate application, then perform HW emulation to see how much acceleration is possible. You will then optimize the kernel code to reduce the latency and improve the initiation interval followed by optimizing the code to improve data transfer rate. Next you will download the bitstream on F1 and validate application execution. The Appendix section lists steps involved in building the full hardware.
 
 ## Step 1: Create an SDAccel Project
-### 1.1. Source the SDAccel settings and create a directory called ptimization\_lab under _~/aws-fpga_. Change the directory to the newly created directory.
+### 1.1. Source the SDAccel settings and create a directory called optimization\_lab under _~/aws-fpga_. Change the directory to the newly created directory.
 **1.1.1.** Execute the following commands in a terminal window to source the required Xilinx tools:
 
    ```
@@ -32,7 +32,7 @@ This lab comprises six primary steps: You will create an SDAccel project, add a 
       cd optimization_flow
    ```
 ### 1.2. Launch SDx, create a workspace in the current directory and create a project, called _optimization\_lab\_example_, using the _Empty Application_ template...
-**1.2.1.** Launch SDAccel by executing sdx in the terminal window
+**1.2.1.** Launch SDAccel by executing **sdx** in the terminal window
 
 An Eclipse launcher widow will appear asking to select a directory as workspace
 
@@ -145,11 +145,11 @@ Note: all objects accessed through a **clCreate..**. function call should be rel
 
 ### 2.3. Set the XOCC Kernel Linker flags
 
-*** In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compiler will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that BANK1 is available, the XOCC Kernel Linker flag has to be added. Add --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field***
+### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compiler will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that BANK1 is available, the XOCC Kernel Linker flag has to be added. Add --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field
 
-*** In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compile will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that there is BANK1 is available, the XOCC Kernel Linker flag --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field has to be added***
+### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compile will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that there is BANK1 is available, the XOCC Kernel Linker flag --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field has to be added
 
-**2.3.1.** In the Project Explorer pane, right-click the project **optimization\_lab\_example**  **and s** elect the **C/C++ Settings**
+**2.3.1.** In the Project Explorer pane, right-click the project **optimization\_lab\_example** and select the **C/C++ Settings**
 
 **2.3.2.** Select **C/C++ Build** &gt; **Settings** in the left pane
 
@@ -164,12 +164,12 @@ Note: all objects accessed through a **clCreate..**. function call should be rel
 ### 2.4. Build and run software emulation (Emulation-CPU)
 **2.4.1.** Make sure the **project.sdx** under _Optimization\_lab\_example_ in the **Project Explorer** tab is selected
 
-**2.4.2.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-CPU** r click on the drop-down button of _Active build configuration_ and select **Emulation-CPU**
+**2.4.2.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-CPU** or click on the drop-down button of _Active build configuration_ and select **Emulation-CPU**
 
 ![alt tag](./images/Fig4-9.png)
 #### Figure 9. Selecting CPU emulation build configuration
 
-**2.4.3.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
+**2.4.3.** Either select **Project &gt; Build Project** or click on the (![alt tag](./images/Fig-build.png)) button
 
 This will build the project including Optimization\_lab\_example.exe file under the Emulation-CPU directory
 
@@ -219,14 +219,14 @@ The **Application Timeline** collects and displays host and device events on a c
 
 ## Step 3: Perform HW Emulation      
 ### 3.1. Select the Emulation-HW build configuration, and build the project.
-**3.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** r click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
+**3.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** or click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
 
 ![alt tag](./images/Fig4-14.png)
 #### Figure 14. Selecting HW emulation build configuration
 
 **3.1.2.** Set the XOCC Kernel Linker flag as done in Step 2-3 above
 
-**3.1.3.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
+**3.1.3.** Either select **Project &gt; Build Project** or click on the (![alt tag](./images/Fig-build.png)) button
 
 This will build the project including Optimization\_lab\_example.exe file under the Emulation-HW directory
 
@@ -289,7 +289,7 @@ The numbers will serve as a baseline for comparison against optimized versions o
 
 ## Step 4. Optimizing the Kernel Code
 ### 4.1. Analyze the kernel code and apply the DATAFLOW directive.
-**4.1.1.** Open the **src &gt;**** krnl\_idct.cpp** file
+**4.1.1.** Open the **src > krnl\_idct.cpp** file
 
 **4.1.2.** Using the **Outline** viewer, navigate to the **krnl\_idct\_dataflow** function
 
@@ -307,9 +307,7 @@ Observe that the three functions are communicating using **hls::streams** object
 ### 4.2. Build the project in Hardware emulation configuration.
 **4.2.1.** Make sure the active configuration is **Emulation-HW**
 
-**4.2.2.** Click on the Build button ( ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdCAYAAAC9pNwMAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gQQDRsR+Z+ZTQAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAD1klEQVRIicWXy08bVxSHvzF2/ILxa2xjU3BSHoISm0cjgVopr7Lopmo3ZV1lwabpuv9GF1Qpi3YTumoqdVVV6qqqkLriETCpMY4cGceF2oAfY2Nsz3QBNhgHMKojftJdzL1zznd/OmfuzAiJxGuVa5DmOqAA2tMX6XSa7e0EhUKhpRCj0Yjb7cFisTSC0+k08fgWfn8Am83eUvDe3i6rqyuAisViPQKrxxXe2fkHvz+AKFoolUotBYuihdu3A4RCfyOKx+DqoizLmExmyuVyS6EAiqJgNrcjy7nanBaOLKuqiqq+3QY/yq9WwWcXzte3s7MsLS01zI+NjfHl48dX2kRT4P39fX6cn2d9fZ3JyUne7e2trb2MRFhcXGRubo6ZmZnWgUulEvNPn6KqKg8ePsTtdhMKhdjc2ACgWCzidruZmJi4UqnOgJWGG9ZWnxOLxfhoagpRFMlms2QyGbxeD+N37iBJEkajEZfL9cb4JsH1O/7uyRNSqRSSw4FeryebzZLL5dDr9RTlDJQP6O/vPzf+QvDpe88GLi+vMDoygtvjQZZlisUihUKBgiyTjgV5JWzjc1vx9I82DawiLq3xsN9PuVzm5eYm6WyWfD6P5uBfvLoU6laE1d8rKIqCd2Csafil4K6uLsIbG0hOJ3v7+4BCaSdEd0eBwW4TxVSKZHiB4HHcVZzXgRWlvjnu3b/Hs5+e4fV6kXM5RsdH0Ip5NHsvMBkNWL3dUImSDC+wplZQ1C/w9AWaBZ+4POt4fHycaDRK4nUCp8tFb+8Adv8Aa7+l2ElGueXrQvIWUePxI3iljCDM4Lw5iEbTdg6yiZNLp9MxPT3NZjiMaLFgt9vRarVY3nmP+EqUtHyAJHmolA5B2SYZWWD5Vwh8/Ainb4g2re4ix+eDq+o79cgADH34CZWDNKmtJex2Ox2OTsoHRVQlSTL8B0vlQ97/9CucvsFzwRpVPWnxZmWySPQEHqCz9pBIJDFYXZgdEmZzOy7xBrnNBdb//OWNsVVe3aePoihND6lnEJN0i/hWgvyhQruzC5PdQZvuBto2gfT2q4aYOsf1u1GbHkKblp7AXaSBD4iEI2hNVvSig8oNA3t5heH7nzfEnNaVXotnZe28iW9sir9+fsEP38yCINAheQlMPcI3cvfCfP8LDNDZN8pnX3/fMH9ZrhpYEAQURUEQhCvDm5GqqnW5aweIwWBAlmXMZvNbActyDoPBSJVXay6r1UYwuMLubupK3d3M2N1Nsbb2HJvNduK4WgpJclEqlQkGV8lk0i11K4oWhoaGcTictTNDiMVi1/Lv9B+OCjxVOEzRjQAAAABJRU5ErkJggg==)
-) Icon to build the project
-) Icon to build the project
+**4.2.2.** Click on the Build button (![alt tag](./images/Fig-build.png)) to build the project
 ### 4.3. Analyze the HLS report.
 **4.3.1.** In the **Reports** tab, expand **optimization\_lab\_example** &gt; **Emulation-HW (hw\_emu)** &gt; **binary\_container\_1**  &gt;   **krnl\_idct**
 **4.3.2.** Click the **HLS Report** and review it
@@ -324,9 +322,7 @@ Observe that the three functions are communicating using **hls::streams** object
 
 ### 4.4. Run the Hardware Emulation.
 
-**4.4.1.** Run the application by clicking the Run button ( ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gQQDR8gzC1ccwAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAC0ElEQVRIie2VS2gTURSGv3tvGpu2NsG2WmssVq1Ca7W0ihYUfNSFIogIFUQ3goiuhAoqgq4EF4JVXCguxIWiIj4QEUQRtFqpXfgAxRfUGlO1IUlnkjQzk8m4KA1qkxqFuvKHs/rnnu/+Z+7cEf39QYdxlhxvAIDLGfcc/yoJjH+Uf5VkbOlGgssv7nDvfRd9kW+k0zYVJT5W1S5hc+Nayot9v4WIYPBzznk97n3O/tsnaJzjo2FWKf7JxZhWmmAozofPcTpffGPfim2sr1/+d0ke9z7n4N2TtLVWUVc5h1L3JN5FnwHgK3HTPNfNjKkeznRdxLAs2hpX54RkfSe6kWDPrWMsne9DIjCSknUztjPPu5KIZmRKIljRVMap7kt8in7JDXEc+LXO9dykusLDBJciqpvEEikAVtdsZE3NFrSYTVQ3ieompmlT6/dw/NGFUX1GKuu47r7voqJcEtGN4WQeM+O1TF9OqbuMjodHSaaSAJQUKp68fvln4wpEB7DtNBHdIKIb6AnrJ79+SgOHWg/jxktEN9ASJgXKxddYOH8IQDyRQotZaDGLxFBqlO/3+VlQuTDzTCptY9t21l5Zv/jyIh+OY+FSYngn8ue9mLbJkTsd3H/7ECUldtohbiSp8paTrV/WJMtqmogZKZQSKCWQUmS8cCJC+7UDPPjQmfGHLJvGabW5hpIdsrV5LXrcASFQSmYgveE+dl/dy9uBdyglUUoihGBAs9jZ0pYbku3I+b2VbFu0gWAoheMItOQg3R97aL++j1A8hJISJSVSSvrDJq2zltA8rS7nERaBQCDntXL6yRXO9txg5lQvEz0FCJHOeINxk7DmsNg/n4OtO3BJlTPJmBCANwO9dHSe52nfK4oLCykqcKMlh5hdNp1dLZtYXD1vrOX5QUZk2hahWBTbsSkr8lHkLsxnGZDHVT8ityqgyluRd+Mf9f/3+0f6Dhp1RNRlihttAAAAAElFTkSuQmCC)
-) icon
-) icon
+**4.4.1.** Run the application by clicking the Run button (![alt tag](./images/Fig-run.png))
 
 Wait for the run to finish with RUN COMPLETE message
 
@@ -341,7 +337,7 @@ Compare the **Kernel Total Time (ms)** with the results from the un-optimized ru
 
 ## Step 5: Optimizing the Host Code
 ### 5.1. Analyze the host code.
-**5.1.1.** Open the **src &gt;**** idct.cpp** file
+**5.1.1.** Open the **src > idct.cpp** file
 
 **5.1.2.** Using the **Outline** viewer, navigate to the **runFPGA** function
 
@@ -392,7 +388,7 @@ The green segments at the bottom indicate when the IDCT kernel is running
 
 **5.1.10.** Save the file
 ### 5.2. Run the Hardware Emulation.
-**5.2.1.** Run the application by clicking the Run button ( ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gQQDR8gzC1ccwAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAC0ElEQVRIie2VS2gTURSGv3tvGpu2NsG2WmssVq1Ca7W0ihYUfNSFIogIFUQ3goiuhAoqgq4EF4JVXCguxIWiIj4QEUQRtFqpXfgAxRfUGlO1IUlnkjQzk8m4KA1qkxqFuvKHs/rnnu/+Z+7cEf39QYdxlhxvAIDLGfcc/yoJjH+Uf5VkbOlGgssv7nDvfRd9kW+k0zYVJT5W1S5hc+Nayot9v4WIYPBzznk97n3O/tsnaJzjo2FWKf7JxZhWmmAozofPcTpffGPfim2sr1/+d0ke9z7n4N2TtLVWUVc5h1L3JN5FnwHgK3HTPNfNjKkeznRdxLAs2hpX54RkfSe6kWDPrWMsne9DIjCSknUztjPPu5KIZmRKIljRVMap7kt8in7JDXEc+LXO9dykusLDBJciqpvEEikAVtdsZE3NFrSYTVQ3ieompmlT6/dw/NGFUX1GKuu47r7voqJcEtGN4WQeM+O1TF9OqbuMjodHSaaSAJQUKp68fvln4wpEB7DtNBHdIKIb6AnrJ79+SgOHWg/jxktEN9ASJgXKxddYOH8IQDyRQotZaDGLxFBqlO/3+VlQuTDzTCptY9t21l5Zv/jyIh+OY+FSYngn8ue9mLbJkTsd3H/7ECUldtohbiSp8paTrV/WJMtqmogZKZQSKCWQUmS8cCJC+7UDPPjQmfGHLJvGabW5hpIdsrV5LXrcASFQSmYgveE+dl/dy9uBdyglUUoihGBAs9jZ0pYbku3I+b2VbFu0gWAoheMItOQg3R97aL++j1A8hJISJSVSSvrDJq2zltA8rS7nERaBQCDntXL6yRXO9txg5lQvEz0FCJHOeINxk7DmsNg/n4OtO3BJlTPJmBCANwO9dHSe52nfK4oLCykqcKMlh5hdNp1dLZtYXD1vrOX5QUZk2hahWBTbsSkr8lHkLsxnGZDHVT8ityqgyluRd+Mf9f/3+0f6Dhp1RNRlihttAAAAAElFTkSuQmCC)) icon
+**5.2.1.** Run the application by clicking the Run button (![alt tag](./images/Fig-run.png))
 
 - Since only the idct.cpp file was changed, the incremental makefile rebuilds only the host code before running emulation
 - This results in a much faster iteration loop since it is usually the compilation of the kernel to hardware which takes the most time
@@ -427,7 +423,7 @@ Note: system tasks might slow down communication between the application and the
 ![alt tag](./images/Fig4-23.png)
 #### Figure 23. Execution output
 
-**6.1.4.** Enter exit in the teminal window to exit out of sudo shell
+**6.1.4.** Enter **exit** in the teminal window to exit out of the sudo shell
 
 **6.1.5.** Close the SDx by selecting **File &gt; Exit**
 
@@ -450,7 +446,7 @@ Start the next lab: <a href="rtl_kernel_wizard_lab.md">5. RTL-Kernel Wizard Lab<
 
 **A.1.2.** Set the XOCC Kernel Linker flag as done in Step 2-3 above
 
-**A.1.3.** Either select **Project &gt; Build Project** or click on the ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAbCAIAAADtdAg8AAAAAXNSR0IArs4c6QAAAAlwSFlzAAASdAAAEnQB3mYfeAAAAqVJREFUSEutlM9P2mAYx1t+CLX1belLSyiLceoCGSroZQezwxI9zNuyZMd5cIedx9+y2zy4qy4cdjJZotl2WZawCO4ApWaRFlhx1JafFQHfxcQMcMCWvnkPb94fn+f7ft/nffBCIY9Z12zWoX6TbN0uZmG3Wh2GdS3seD6v3Grf9pvtVCr159Li4uLWi63hXt+C03V9d3cvk06vrKzMzs1dnz+RpEQiEV5Y2Nx8PoTYj2u1Wjs7b2047hcEn8+XTqezoojOm6ZJM8zGxuNwOPwPuORRMh6Pr62vAwCq1WoymcQxLBKNQsgSBOH1el0u1xBcz8siv/b39zmOc7vdiFWpVNCg3WribXN+fj4QCAxn9ecd8h6xkF/XrEajUa/VNCXzI/FByabGSc/+vENmMwwj53KSJImiWNdkn1PvFI+OD3fz2eTIL9SDEwRBzGQMw9A07bJ10VSzsKuGpgE3hZ2ffP1+uJeXelJnkG6PxWI3s3a7/fDgoNlsopsGQyE/1SG7OksTgCI7zYr2Uzb08iTNT7H832Qi3KubNZ7ndd2o1aoA0NHl5dl7ITUnNnQV8vyE09Yxq+ViTtdKU1CYBB4cR2/e33pwSF04fB+ybCQaQe8IPFxZVc6UE4JweVgP3r3ELupa8VT7VaJYgaRZ3NZvfQ8OxUIxIYQURSE0GjP8nZqhGyWZhXDC6ei0TCTyvHh6VlI9wixJwz55IwrUJIAzSw+ddKBQKBEMR0EvSVJe4NKlL8ef3g+mzugCxU8HKe+MIufrZhtwftLD2h1Op8N2rsqD3o3GocN3l1Z9wQdSVnIQtBuwnQlXudaOPHo6iMNl+ZYgg/sU8ejzu9fSt4/IXQD9y2vPVp+8/H/cyP9wvWH0ZccE3eCsLO5Wqxun7Iy/x2J1V1Re5zUBRl+EAAAAAElFTkSuQmCC) button
+**A.1.3.** Either select **Project &gt; Build Project** or click on the (![alt tag](./images/Fig-build.png)) button
 
 This will build the project under the **System** directory. The built project will include optimization\_lab\_example.exe file along with binary\_container\_1.xclbin file
 
@@ -466,7 +462,7 @@ To execute the application on F1, the following files are needed:
 
 The xclbin and the host applications are already generated by the System configuration step
 
-**A.2.1.** Create a **xclbin** directory under the _optimization\_lab_ directory using the File Explorer
+**A.2.1.** Create a **xclbin** directory under the _optimization\_lab_ directory using the following commands
 
    ```
       cd /home/centos/aws-fpga/optimization_lab
@@ -496,7 +492,7 @@ The create\_sdaccel\_afi.sh script does the following:
 - Generates a \_afi\_id.txt which contains the FPGA Image Identifier (or AFI ID) and Global FPGA Image Identifier (or AGFI ID) of the generated AFIs
 - Creates the \*.awsxclbin AWS FPGA binary file which will need to be read by the host application to determine which AFI should be loaded in the FPGA.
 
-**A.3.2.** Enter the following command to note the values of the AFI IDs by opening the \_afi\_id.txt file.
+**A.3.2.** Enter the following command to note the values of the AFI IDs by opening the *\_afi\_id.txt file.
    ```
       cat *afi_id.txt
    ```
