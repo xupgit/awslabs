@@ -108,7 +108,7 @@ You may see several instances
 ![alt tag](./images/Fig1-15.png)
 #### Figure 12. Entering username and password
 
-**2.1.7.** The desktop will be showed up
+**2.1.7.** The desktop will show up
 ![alt tag](./images/Fig1-16.png)
 #### Figure 13. The RDP desktop
 
@@ -135,6 +135,7 @@ You may see several instances
 #### Figure 14. Power OFF window
 
 **3.1.3.** Click on the **Power Off** option
+
 ![alt tag](./images/Fig1-18.png)
 #### Figure 15. Powering OFF the RDP connection
 
@@ -179,6 +180,7 @@ Make sure that SSH is selected as the Connection type
 If you don&#39;t have the private key file (as in workshop) you can skip this step
 
 **A.1.5.** Click **Open**
+
 ![alt tag](./images/Fig1-11.png)
 #### Figure 19. Selecting private key file
 
