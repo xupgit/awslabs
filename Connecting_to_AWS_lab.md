@@ -75,6 +75,7 @@ You may see several instances
 **1.2.6.** Click on the **Yes, Start** button
 
 **1.2.7.** Click on the refresh button(![alt tag](./images/Fig1-refresh.png)) to see the updated status to _Running_
+
 ![alt tag](./images/Fig1-8.png)
 #### Figure 8. Running state
 
