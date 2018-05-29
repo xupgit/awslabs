@@ -145,9 +145,9 @@ Note: all objects accessed through a **clCreate..**. function call should be rel
 
 ### 2.3. Set the XOCC Kernel Linker flags
 
-### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compiler will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that BANK1 is available, the XOCC Kernel Linker flag has to be added. Add --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field
+#### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compiler will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that BANK1 is available, the XOCC Kernel Linker flag has to be added. Add --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field
 
-### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compile will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that there is BANK1 is available, the XOCC Kernel Linker flag --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field has to be added
+#### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compile will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that there is BANK1 is available, the XOCC Kernel Linker flag --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field has to be added
 
 **2.3.1.** In the Project Explorer pane, right-click the project **optimization\_lab\_example** and select the **C/C++ Settings**
 
