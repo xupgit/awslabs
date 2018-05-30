@@ -90,11 +90,11 @@ The project IDE will be displayed with six main windows: Project Explorer, Proje
 #### Figure 6. Selecting CPU emulation build configuration
 
 
-**2.1.5.** Either select **Project &gt; Build Project** or click on the build (![alt tag](./images/Fig3-build.png)) button
+**2.1.5.** Either select **Project &gt; Build Project** or click on the build (![alt tag](./images/Fig-build.png)) button
 
 This will build the project including gui\_flow\_example.exe file under the Emulation-CPU directory
 
-**2.1.6.** Run the application by clicking the Run button (![alt tag](./images/Fig3-run.png))
+**2.1.6.** Run the application by clicking the Run button (![alt tag](./images/Fig-run.png))
 
 The application will be run and the output will be displayed in the Console tab
 
@@ -113,7 +113,7 @@ The application will be run and the output will be displayed in the Console tab
 ![alt tag](./images/Fig3-8.png)
 #### Figure 8. Selecting HW emulation build configuration
 
-**3.1.2.** Either select **Project &gt; Build Project** or click on the (![alt tag](./images/Fig3-build.png)) button
+**3.1.2.** Either select **Project &gt; Build Project** or click on the (![alt tag](./images/Fig-build.png)) button
 
 This will build the project including gui\_flow\_example.exe file under the Emulation-HW directory
 
