@@ -235,7 +235,7 @@ This will build the project including rtl\_kernel\_example.exe file under the Em
 ![alt tag](./images/Fig5-24.png)
 #### Figure 24. Execution output
 
-**3.1.4.** Enter exit in the teminal window to exit out of sudo shell
+**3.1.4.** Enter **exit** in the teminal window to exit out of sudo shell
 
 **3.1.5.** Close the SDx by selecting **File &gt; Exit**
 
