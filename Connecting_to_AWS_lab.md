@@ -125,29 +125,23 @@ You may see several instances
 ## Step 3: Stopping the Instance and Signing Out
 
 **It is important to shut down the instance in order to stop billing meter**
+**You do not need to execute this command in this lab as you will continue the session for the supsequent labs**
 
-### 3.1. Shut down the RDP instance using the top Power OFF button.
+### 3.1. Shut down the RDP instance from the terminal window.
 
-**3.1.1.** Click on the Power OFF button ![alt tag](./images/Fig1-stop.png) located on the top right corner
+**3.1.1.** Type in the following command to terminate the RDP session and shutdown the instance
 
-**3.1.2.** A window will show up showing settings, lock, and power off buttons. Click on the Power OFF button
-![alt tag](./images/Fig1-17.png)
-#### Figure 14. Power OFF window
-
-**3.1.3.** Click on the **Power Off** option
-
-![alt tag](./images/Fig1-18.png)
-#### Figure 15. Powering OFF the RDP connection
-
-**3.1.4.** Enter the password to complete the process
-
+   ```
+      sudo shutdown now	  
+   ```
+   
 **3.1.5.** Check the browser window, you will see status as either **Stopping** or **Stopped.** Click on the refresh button to see the status update
 ![alt tag](./images/Fig1-19-1.png)   ![alt tag](./images/Fig1-19-2.png)
 #### Figure 16. Instance Status
 
 **3.1.6.** Once the instance is stopped, sign out by clicking on the drop-down button on the top bar and selecting Sign Out
 ![alt tag](./images/Fig1-20.png)
-#### Figure 17. Signing out
+#### Figure 14. Signing out
 
 ## Conclusion
 
@@ -171,7 +165,7 @@ Start the next lab: <a href="Makefile_Flow_lab.md">2. Makefile Flow</a>
 
 Make sure that SSH is selected as the Connection type
 ![alt tag](./images/Fig1-10.png)
-#### Figure 18. Session settings in PuTTY
+#### Figure 15. Session settings in PuTTY
 
 **A.1.3.** Expand **SSH** under the _Connection_ in the left panel and click **Auth**
 
@@ -182,13 +176,13 @@ If you don&#39;t have the private key file (as in workshop) you can skip this st
 **A.1.5.** Click **Open**
 
 ![alt tag](./images/Fig1-11.png)
-#### Figure 19. Selecting private key file
+#### Figure 16. Selecting private key file
 
 **A.1.6.** Click **Yes**
 
 The PuTTY window will open. It will ask for the password (in case of the workshop). Enter the provided password
 ![alt tag](./images/Fig1-12.png)
-#### Figure 20. The PuTTY window showing the connection
+#### Figure 17. The PuTTY window showing the connection
 
 **A.1.7.** Set password for the RDP connection by entering sudo passwd &lt;your choice of password&gt; command. You will use the same password in the RDP connection.
 
