@@ -125,6 +125,7 @@ You may see several instances
 ## Step 3: Stopping the Instance and Signing Out
 
 **It is important to shut down the instance in order to stop billing meter**
+
 **You do not need to execute this command in this lab as you will continue the session for the supsequent labs**
 
 ### 3.1. Shut down the RDP instance from the terminal window.
