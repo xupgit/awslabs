@@ -87,7 +87,7 @@ The project IDE will be displayed with six main windows: Project Explorer, Proje
 ## Step 2: Add Kernel and Perform CPU Emulation
 ### 2.1. Select the function(s) that needs to be accelerated.
 
-**2.1.1.** Click on the _Add Hardware Function_ button icon ( ![](data:image/*;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4gQQDQk2JGFc9QAAAAd0RVh0QXV0aG9yAKmuzEgAAAAMdEVYdERlc2NyaXB0aW9uABMJISMAAAAKdEVYdENvcHlyaWdodACsD8w6AAAADnRFWHRDcmVhdGlvbiB0aW1lADX3DwkAAAAJdEVYdFNvZnR3YXJlAF1w/zoAAAALdEVYdERpc2NsYWltZXIAt8C0jwAAAAh0RVh0V2FybmluZwDAG+aHAAAAB3RFWHRTb3VyY2UA9f+D6wAAAAh0RVh0Q29tbWVudAD2zJa/AAAABnRFWHRUaXRsZQCo7tInAAAB1klEQVQ4ja2UvW4TQRDHf7Oc3CSFSYMbpCA6Gj8AhRNRIwoeIQ9AQQEKH85ZygPwAC7yAHkARJGkSBUK3CCKICEhoRTIMhIK6Ly3f4r1+T5sRUbySKO71c789j9zc2u/rr1YoyVm68RBsmYeia1ZYnLTphk4wJlwFtdVC4JcRh5qCleDuYvnMP4EwODijP79Nnr8Ebdxj1BhOAOa7pqw8z3s8zvs6izC+qekXyewsY3UzJ2VUrhzEXjLVWCXRwCk3+tVHB4mgGr59ifL53NYKK8pq8D6/dOF1qTpDi/287JVf6ehBBoYwqEaDEBbXQajERDBaboDwMtXlS/S7CFSfL88gt/fUKdXnjwe0b9bV7f/Oiz0n8wHFT71ubzP5b2Xv/6p8OGJNGTu+ZehvPc6OEBTn6uaW7hlvih5pg5BNsG9f4SNY4lsbhN2j9FWdxZFEblgSbkNWgJTp0fYPYZWG6hGl6t6D608y5rKiqDzPcgmc0hz1Gpj1zxK3bczNcTnnR7h4RBat0vaDRYvB4GIn99GA8gm6MEzQvdNhJphLPmZl5iFIElCCriTp9BqR9DmNuVNZKx6K5k0A/44iSV3evNks9VBi0CVQ1AF/q+ZqqQ1mFsnDOAfrObxsWGuNgEAAAAASUVORK5CYII=)) in the **Hardware Functions** tab to see possible functions which may be accelerated
+**2.1.1.** Click on the _Add Hardware Function_ button icon (![alt tag](./images/Fig-hw_button.png)) in the **Hardware Functions** tab to see possible functions which may be accelerated
 
 **2.1.2.** Select _kernl\_idct_ function and click **OK**
 
@@ -146,8 +146,6 @@ Note: all objects accessed through a **clCreate..**. function call should be rel
 ### 2.3. Set the XOCC Kernel Linker flags
 
 #### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compiler will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that BANK1 is available, the XOCC Kernel Linker flag has to be added. Add --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field
-
-#### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compile will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that there is BANK1 is available, the XOCC Kernel Linker flag --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field has to be added
 
 **2.3.1.** In the Project Explorer pane, right-click the project **optimization\_lab\_example** and select the **C/C++ Settings**
 
