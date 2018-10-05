@@ -14,7 +14,7 @@
 ---------------------------------------
 ### Introduction
 
-Welcome to the XUP AWS F1 Labs. During this session you will gain hands-on experience with AWS F1 and learn how to develop accelerated applications using the AWS F1 OpenCL flow and the Xilinx SDAccel development environment.
+Welcome to the XUP AWS F1 Labs. These labs will provide you hands-on experience with AWS F1 when connected to AWS F1 instance using workshop accounts.  You will learn how to develop accelerated applications using the AWS F1 OpenCL flow and the Xilinx SDAccel development environment.
 
 #### Overview of the AWS F1 platform and SDAccel flow
 
@@ -30,7 +30,7 @@ The architecture of the AWS F1 platform and the SDAccel development flow are pic
 
 #### Overview of the XUP AWS F1 Labs 
 
-This consists of five labs. It is recommended to complete each lab before proceeding to the next.
+There are five labs. It is recommended to complete each lab before proceeding to the next.
 
 1. **Connecting to Your F1 Instance** \
 You will start a pre-configured EC2 F1 instance and connect to it using a remote desktop client. 

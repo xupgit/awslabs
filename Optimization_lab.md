@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab guides you through the steps involved in creating a project and adding a kernel function. After creating a project you will run CPU and hardware emulations to verify the functionality, analyze various generated reports and then apply techniques both on host and kernel side to improve throughput and data transfer rate.
+This lab guides you through the steps involved in creating a project and adding a kernel function. After creating a project you will run CPU and hardware emulations to verify the functionality, analyze various generated reports and then apply optimization techniques both on host and kernel side to improve throughput and data transfer rate.
 
 ## Objectives
 
@@ -28,35 +28,40 @@ This lab comprises six primary steps: You will create an SDAccel project, add a 
       cd ~/aws-fpga		  
       source sdaccel_setup.sh		  
       source $XILINX_SDX/settings64.sh	  
+   ```
+**1.1.2.** Execute the following commands in a terminal window to create a working directory:
+
+   ```
       mkdir optimization_flow	  
       cd optimization_flow
    ```
-### 1.2. Launch SDx, create a workspace in the current directory and create a project, called _optimization\_lab\_example_, using the _Empty Application_ template...
+
+### 1.2. Launch SDx, create a workspace in the current directory and create a project, called _optimization\_lab\_example_, using the _Empty Application_ template.
 **1.2.1.** Launch SDAccel by executing **sdx** in the terminal window
 
 An Eclipse launcher widow will appear asking to select a directory as workspace
 
-**1.2.2.** Click on the **Browse…** button, browse to **/home/centos/aws-fpga/optimization\_lab** , click **OK** twice
-![alt tag](./images/Fig4-1.png)
+**1.2.2.** Click on the **Browse…** button, browse to **/home/centos/src/project_data/aws-fpga/optimization\_lab** , click **OK** twice
+![alt tag](./images/optimization_lab/FigOptimizationLab-1.png)
 #### Figure 1. Selecting a workspace
 
 The Xilinx SDx IDE window will be displayed
 
-![alt tag](./images/Fig4-2.png)
+![alt tag](./images/FigSDXIDE.png)
 #### Figure 2. The SDx IDE window
 
 **1.2.3.** Click on the **Add Custom Platform** link on the _Welcome_ page
 
-**1.2.4.** Click on the **Add Custom Platform** button, browse to **/home/centos/aws-fpga/SDAccel/aws\_platfom/xilinx\_aws-vu9p-f1\_4ddr-xpr-2pr\_4\_0** , and click **OK**
+**1.2.4.** Click on the **Add Custom Platform** button, browse to **/home/centos/aws-fpga/SDAccel/aws\_platfom/xilinx\_aws-vu9p-f1\_dynamic\_5\_0** , and click **OK**
 
-![alt tag](./images/Fig4-3.png)
+![alt tag](./images/FigPlatform.png)
 #### Figure 3. Hardware platform selected
 
 **1.2.5.** Click **Apply** and then click **OK**
 
 **1.2.6.** Click on the **Create SDx Project** link on the _Welcome_ page
 
-**1.2.7.** In the _New Project_&#39;s page enter **optimization\_lab\_example** in the _Project name:_ field and click **Next**
+**1.2.7.** In the _New Project_&#39;s page enter **optimization\_lab\_example** in the _Project name:_ field and click **Next** 
 
 Note the AWS-VU9P-F1 board is displayed as the hardware platform
 
@@ -66,12 +71,12 @@ Note the AWS-VU9P-F1 board is displayed as the hardware platform
 
 **1.2.10.** Select **Empty Application** from the _Available Templates_ pane and click **Finish**
 
-![alt tag](./images/Fig4-4.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-4.png)
 #### Figure 4. Selecting an application template
 
 The project IDE will be displayed with six main windows: Project Explorer, Project Settings, Reports, Outline, multi-tab console, and Emulation Console.
 
-![alt tag](./images/Fig4-5.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-5.png)
 #### Figure 5. Project IDE
 
 ### 1.3. Import the provided two source files from the /home/centos/sources/optimization\_lab folder to the project
@@ -91,7 +96,7 @@ The project IDE will be displayed with six main windows: Project Explorer, Proje
 
 **2.1.2.** Select _kernl\_idct_ function and click **OK**
 
-![alt tag](./images/Fig4-6.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-6.png)
 #### Figure 6. Selecting a kernel function
 
 **2.1.3.** Notice the **binary\_container\_1** folder is created under which _kml\_idct_ function is added
@@ -100,7 +105,7 @@ The project IDE will be displayed with six main windows: Project Explorer, Proje
 
 **2.2.2.** Locate the **Outline** viewer corresponds to a function in the selected source file. This view provides a convenient way of looking up and navigating the code hierarchy. Each green dot in the **Outline** viewer corresponds to a function in the selected source file
 
-![alt tag](./images/Fig4-7.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-7.png)
 #### Figure 7. Outline view
 
 **2.2.3.** In the _Outline_ viewer, click **idct** to look up the function
@@ -145,7 +150,7 @@ Note: all objects accessed through a **clCreate..**. function call should be rel
 
 ### 2.3. Set the XOCC Kernel Linker flags
 
-#### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compiler will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that BANK1 is available, the XOCC Kernel Linker flag has to be added. Add --xp misc:map\_connect=add.kernel.krnl\_idct\_1.M\_AXI\_GMEM2.core.OCL\_REGION\_0.M01\_AXI in the linker flag field
+#### In the idct.cpp file, locate lines 308-310 and note that there are two DDR banks (BANK0 and BANK1) are being used. By default, the compiler will connect all m\_axi ports to DDR BANK0. In order to instruct the compiler that BANK1 is available, the XOCC Kernel Linker flag has to be added. Add --sp krnl_idct_1.m_axi_gmem:bank0 --sp krnl_idct_1.m_axi_gmem1:bank0 --sp krnl_idct_1.m_axi_gmem2:bank1 in the linker flag field
 
 **2.3.1.** In the Project Explorer pane, right-click the project **optimization\_lab\_example** and select the **C/C++ Settings**
 
@@ -155,7 +160,7 @@ Note: all objects accessed through a **clCreate..**. function call should be rel
 
 **2.3.4.** Using the gedit editor, open the file **xocc\_linker\_flag.txt** from the **/home/centos/sources/optimization\_lab/** directory, copy all the text and paste it in the **Other flags** field
 
-![alt tag](./images/Fig4-8.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-8.png)
 #### Figure 8. Adding the XOCC Kernel Linker flag
 
 **2.3.5.** Click **OK**
@@ -164,7 +169,7 @@ Note: all objects accessed through a **clCreate..**. function call should be rel
 
 **2.4.2.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-CPU** or click on the drop-down button of _Active build configuration_ and select **Emulation-CPU**
 
-![alt tag](./images/Fig4-9.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-9.png)
 #### Figure 9. Selecting CPU emulation build configuration
 
 **2.4.3.** Either select **Project &gt; Build Project** or click on the (![alt tag](./images/Fig-build.png)) button
@@ -183,7 +188,7 @@ This will add **../binary\_container\_1.xclbin**
 
 The application will be run and the output will be displayed in the Console tab
 
-![alt tag](./images/Fig4-10.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-10.png)
 #### Figure 10. CPU Emulation run output
 
 ### 2.5. Review the software emulation reports
@@ -191,14 +196,14 @@ The application will be run and the output will be displayed in the Console tab
 
 There will be two files generated by the tool after running the software emulation: Profile Summary and Application Timeline
 
-![alt tag](./images/Fig4-11.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-11.png)
 #### Figure 11. Generated reports
 
 **2.5.2.** Double-click the **Profile Summary** report and review it
 
 This report provides data related to how the application runs. Notice that the report has four tabs at the top: **Top Operations** , **Kernels &amp; Compute Units** , **Data Transfers** , and **OpenCL APIs**.
 
-![alt tag](./images/Fig4-12.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-12.png)
 #### Figure 12. The Profile Summary report
 
 Click the each tab and review the report:
@@ -210,7 +215,7 @@ Click the each tab and review the report:
 
 **2.5.3.** Double-click the **Application Timeline** report and review it
 
-![alt tag](./images/Fig4-13.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-13.png)
 #### Figure 13. The Application Timeline
 
 The **Application Timeline** collects and displays host and device events on a common timeline to help you understand and visualize the overall health and performance of your systems. These events include OpenCL API calls from the host code: when they happen and how long each of them takes.
@@ -219,7 +224,7 @@ The **Application Timeline** collects and displays host and device events on a c
 ### 3.1. Select the Emulation-HW build configuration, and build the project.
 **3.1.1.** Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** or click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
 
-![alt tag](./images/Fig4-14.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-14.png)
 #### Figure 14. Selecting HW emulation build configuration
 
 **3.1.2.** Set the XOCC Kernel Linker flag as done in Step 2-3 above
@@ -232,13 +237,13 @@ This will build the project including Optimization\_lab\_example.exe file under 
 
 **3.1.5.** Click on the **Arguments** tab and notice that the _binary\_container\_1.xclbin_ is already assigned
 
-If no argument was assigned then you would have to explicitly assigned the **xclbin** by clicking on the _Automatically add binary container(s) to arguments_, and click **Apply**
+If no argument was assigned then you would have to explicitly assign the **xclbin** by clicking on the _Automatically add binary container(s) to arguments_, and click **Apply**
 
 **3.1.6.** Click **Run** to run the application
 
 **3.1.7.** The Console tab shows that the test was completed successfully along with the data transfer rate
 
-![alt tag](./images/Fig4-15.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-15.png)
 #### Figure 15. Hardware emulation run output
 
 ### 3.2. Understand the HLS Report, profile summary, and Application Timeline.
@@ -246,7 +251,7 @@ If no argument was assigned then you would have to explicitly assigned the **xcl
 
 **3.2.2.** Double-click the **Profile Summary** report and review it
 
-![alt tag](./images/Fig4-16.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-16.png)
 #### Figure 16. HW-Emulation Profile Summary report
 
 **3.2.3.** Review the **Profile Rule Checks** section at the bottom of the **Profile Summary**
@@ -261,14 +266,14 @@ If no argument was assigned then you would have to explicitly assigned the **xcl
 
 This number will serve as a baseline (reference point) to compare against after optimization.
 
-![alt tag](./images/Fig4-17.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-17.png)
 #### Figure 17. HW-Emulation Kernels &amp; Compute Units report
 
 **3.2.6.** In the **Reports** tab, expand **optimization\_lab\_example** &gt; **Emulation-HW** &gt; **binary\_container\_1** &gt; **krnl\_idct**
 
 **3.2.7.** Double-click the **HLS Report** and review it
 
-![alt tag](./images/Fig4-18.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-18.png)
 #### Figure 18. HLS report before optimization
 
 **3.2.8.** In the **Performance Estimates** section, expand the **Latency (clock cycles)** &gt; **Summary** and note the following numbers:
@@ -311,7 +316,7 @@ Observe that the three functions are communicating using **hls::streams** object
 
 **4.3.2.** Click the **HLS Report** and review it
 
-![alt tag](./images/Fig4-19.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-19.png)
 #### Figure 19. HLS report after applying pragma DATAFLOW
 
 **4.3.3.** In the **Performance Estimates** section, expand the **Latency (clock cycles)** &gt; **Summary** and note the following numbers:
@@ -331,7 +336,7 @@ Wait for the run to finish with RUN COMPLETE message
 
 Compare the **Kernel Total Time (ms)** with the results from the un-optimized run
 
-![alt tag](./images/Fig4-20.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-20.png)
 #### Figure 20. Total execution time of 0.029 compared to 0.046 of un-optimized
 
 ## Step 5: Optimizing the Host Code
@@ -353,7 +358,7 @@ These OpenCL functions use events to signal their completion and synchronize exe
 
 The green segments at the bottom indicate when the IDCT kernel is running
 
-![alt tag](./images/Fig4-21.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-21.png)
 #### Figure 21. Application Timeline before host code optimization
 
 **5.1.4.** Notice that there are gaps between each of the green segments indicating that the operations are not overlapping
@@ -398,7 +403,7 @@ The green segments at the bottom indicate when the IDCT kernel is running
 
 Observe how **software pipelining** enables overlapping of data transfers and kernel execution.
 
-![alt tag](./images/Fig4-22.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-22.png)
 #### Figure 22. Application Timeline after the host code optimization
 
 Note: system tasks might slow down communication between the application and the hardware simulation, impacting on the measured performance results. The effect of software pipelining is considerably higher when running on the actual hardware
@@ -414,12 +419,12 @@ Note: system tasks might slow down communication between the application and the
 
    ```
       sudo sh
-      source /opt/Xilinx/SDx/2017.1.rte/setup.sh
+      source /opt/Xilinx/SDx/2017.4.rte.dyn/setup.sh
       ./optimization_lab_example.exe xclbin/binary_container_1.awsxclbin
    ```
 **6.1.3.** The FPGA bitstream will be downloaded and the host application will be executed showing output something like:
 
-![alt tag](./images/Fig4-23.png)
+![alt tag](./images/optimization_lab/FigOptimizationLab-23.png)
 #### Figure 23. Execution output
 
 **6.1.4.** Enter **exit** in the teminal window to exit out of the sudo shell
