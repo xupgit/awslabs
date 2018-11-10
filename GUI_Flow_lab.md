@@ -113,7 +113,7 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
 1. Either select **Project &gt; Build Project** or click on the (![alt tag](./images/Fig-build.png)) button  
     This will build the project including gui\_flow\_example.exe file under the Emulation-HW directory
 1. Select **Run &gt; Run Configurations…** to open the configurations window
-1. Click on the **Environemnt** tab and change the LD_LIBRARY_PATH to **/opt/xilinx/xrt/lib**, leaving the other two variables to the default settings. This is required to see activities on the Kernel side using Xilinx Run Time library (xrt)
+1. Click on the **Environment** tab and change the LD_LIBRARY_PATH to **/opt/xilinx/xrt/lib**, leaving the other two variables to the default settings. This is required to see activities on the Kernel side using Xilinx Run Time library (xrt)
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-9-1.png"/>
     </p>
@@ -311,7 +311,7 @@ Notice that the activity starts at around 500 ms as no AFI loading took place.
     <i>Data transfer information in the profile summary</i>
     </p>
 
-1. Select the **Waveform** tab, expand all entries in the timeline graph and see various activities in each fucntional units of the design
+1. Select the **Waveform** tab, expand all entries in the timeline graph and see various activities in each functional units of the design
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-30.png"/>
     </p>
@@ -388,4 +388,4 @@ The _gui_flow_example_ project will open
 1. Click **Apply** and **Run** to execute the application through GUI
 1. Once, the execution is completed, double-click on the **Profile Summary** entry under **System &gt; gui\_flow\_example-Default** in the **Assistant** tab  
     The profile report will open.
-1. Double-click on the **Application Timeline** entry in the **Assistant** tab, expand all entries in the timeline graph and see various activities in each fucntional units of the design
+1. Double-click on the **Application Timeline** entry in the **Assistant** tab, expand all entries in the timeline graph and see various activities in each functional units of the design

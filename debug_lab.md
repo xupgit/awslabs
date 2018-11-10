@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab is continuation of the previous (**<a href="rtl_kernel_wizard_lab.md">RTL-Kernel Wizard Lab</a>**) lab. You will add ChipScope cores to monitor the acitivities taking place at the kernel interface level and perform software debugging using SDx debug capabilities.
+This lab is continuation of the previous (**<a href="rtl_kernel_wizard_lab.md">RTL-Kernel Wizard Lab</a>**) lab. You will add ChipScope cores to monitor the activities taking place at the kernel interface level and perform software debugging using SDx debug capabilities.
 
 ## Objectives
 
@@ -20,7 +20,7 @@ After completing this lab, you will be able to:
       source sdaccel_setup.sh
       source $XILINX_SDX/settings64.sh
    ```
-1. Execute the following commands in a terminal window to change to a working directory where the pre-compiled project is provided:  
+1. Execute the following commands in a terminal window to change to a working directory where the precompiled project is provided:  
    ```
       cd /home/centos/sources/debug_lab
    ```
@@ -33,7 +33,7 @@ After completing this lab, you will be able to:
 1. An Eclipse launcher window will appear asking you to select a directory as workspace. Click on the **Browse…** button, browse to **/home/centos/sources/debug\_lab**, click **OK** twice
 
 ### Hardware Debugging
-#### Review the Appendix section to understand how to add ChipScope Debug bridge core. It is already added in the pre-compiled design
+#### Review the Appendix section to understand how to add ChipScope Debug bridge core. It is already added in the precompiled design
 #### Run the application
 1. In the **Assistant** tab, expand **System > Run** and select **Run Configuration**
 1. Make sure that the Arguments tab shows **../binary_container_1.xclbin** entry
@@ -47,7 +47,7 @@ The host application will start executing, loading bitstream, and pausing for th
     <i>Paused execution</i>
     </p>
 ### Start Vivado Hardware Manager
-1. In another terminal window, start virtual jtag connection using following two commands. The Virtual JTAG XVC Server will start listining to TCP port 10201
+1. In another terminal window, start virtual jtag connection using following two commands. The Virtual JTAG XVC Server will start listening to TCP port 10201
    ```
       source $XILINX_SDX/settings64.sh
       sudo fpga-start-virtual-jtag -P 10201 -S 0
@@ -56,7 +56,7 @@ The host application will start executing, loading bitstream, and pausing for th
     <img src ="./images/debug_lab/FigDebugLab-4.png"/>
     </p>
     <p align = "center">
-    <i>Paused execution</i>
+    <i>Starting Virtual JTAG</i>
     </p>
 1. Start Vivado from another terminal window from the debug_lab directory
 1. Click on **Open Hardware Manager** link

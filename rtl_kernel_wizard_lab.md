@@ -225,7 +225,7 @@ This will build the project including rtl\_kernel\_example.exe file under the Em
     </p>  
 
 ###  Run the Application on F1        
-**Since the System build and AFI availability takes considerable amount of time, a pre-compiled version is provided. Use the precompiled solution directory to verify the functionality**  
+**Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality**  
 
 1. Change to the solution directory by executing the following command  
    ```

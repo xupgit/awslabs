@@ -217,8 +217,8 @@ If no argument was assigned then you would have to explicitly assign the **xclbi
     <i>Hardware emulation run output</i>
     </p>  
 Notice that Vivado was started and the simulation waveform window is updated.
-1. Click on the Zoom full button and scroll down the waveform window to see activites taking place in the kernel  
-Since there is no optimzation is done observe that the execution is sequential
+1. Click on the Zoom full button and scroll down the waveform window to see activities taking place in the kernel  
+Since there is no optimization is done observe that the execution is sequential
     <p align="center">
     <img src ="./images/optimization_lab/FigOptimizationLab-15-1.png"/>
     </p>
@@ -287,8 +287,8 @@ Observe that the three functions are communicating using **hls::streams** object
 ###  Run the Hardware Emulation
 1. Run the application by clicking the Run button (![alt tag](./images/Fig-run.png))  
 Wait for the run to finish with RUN COMPLETE message  
-Notice the Vivado simulator starts, displaying various activites  
-Since there is dataflow optimzation done observe concurrent execution of reading, writing, pipelining and kernel running 
+Notice the Vivado simulator starts, displaying various activities  
+Since there is dataflow optimization done observe concurrent execution of reading, writing, pipelining and kernel running 
     <p align="center">
     <img src ="./images/optimization_lab/FigOptimizationLab-20-1.png"/>
     </p>

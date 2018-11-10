@@ -101,7 +101,7 @@ Hardware emulation allow the verification of the functionality of the generated 
     <p align = "center">
     <i>Execution output</i>
     </p>
-1. Enter **exit** in the teminal window to exit out of _sudo shell_  
+1. Enter **exit** in the terminal window to exit out of _sudo shell_  
 ## Conclusion
 
 In this lab, you used a Makefile flow to perform SW and HW emulations. You then ran the application on F1 and validated the functionality.

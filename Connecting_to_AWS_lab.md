@@ -19,7 +19,7 @@ Each registered participant has been allocated a pre-configured EC2 F1 instance 
 
 - Account ID, 
 - IAM username, 
-- Link to access a preconfigured EC2 F1 instance
+- Link to access a pre-configured EC2 F1 instance
 
 ### Login into the AWS and starting an F1 instance
 
