@@ -268,6 +268,7 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
       cd ~/aws-fpga		  
       source sdaccel_setup.sh		  
       source $XILINX_SDX/settings64.sh	  
+      cd /home/centos/sources/gui_flow_solution
       sdx_analyze profile --input sdaccel_profile_summary.csv -o profile
       sdx_analyze trace --input sdaccel_timeline_trace.csv -o timeline
    ```
