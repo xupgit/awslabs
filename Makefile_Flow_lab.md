@@ -50,7 +50,7 @@ Hardware emulation allow the verification of the functionality of the generated 
     <p align = "center">
     <i>Executing the application in software emulation mode</i>
     </p>
-1. Go to the _src_ folder and open the **host.cpp** file to see its content. Observe that the _DATA\_SIZE_ is defined as **256** (line 34), one operand (source\_a) is defined as constant **10** (line 46) and another operand (source\_b) as constant **32** (line 47), providing a result of 42
+1. Go to the _/home/centos/aws-fpga/Makefile\_flow/helloworld_ocl/src_ folder and open the **host.cpp** file to see its content. Observe that the _DATA\_SIZE_ is defined as **256** (line 34), one operand (source\_a) is defined as constant **10** (line 46) and another operand (source\_b) as constant **32** (line 47), providing a result of 42
     <p align="center">
     <img src ="./images/makefile_lab/FigMakefileLab-2.png"/>
     </p>
