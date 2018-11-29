@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This lab guides you through the steps involved in connecting to an AWS EC2 F1 instance, and starting and stopping the instance.
+This lab guides you through the steps involved in connecting to an Xilinx workshop AWS EC2 F1 instance, and starting and stopping the instance.
 
 ## Objectives
 
@@ -15,7 +15,7 @@ After completing this lab, you will be able to:
 - Stop the instance
 
 ## Steps
-Each registered participant has been allocated a pre-configured EC2 F1 instance and should have received an email with the following details:  
+Each registered participant to Xilinx workshop has been allocated a pre-configured EC2 F1 instance and should have received an email with the following details:  
 
 - Account ID, 
 - IAM username, 

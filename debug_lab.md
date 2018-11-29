@@ -13,6 +13,8 @@ After completing this lab, you will be able to:
 - Verify functionality in hardware on F1
 
 ## Steps
+#### Please refer to the Appendix-II if you either want to run the lab in the command line mode or want to run the lab on your personally created instance (i.e. non-xilinx instance)
+
 ### Open an SDAccel Project
 1. Execute the following commands, if not already done, in a terminal window to source the required environment settings:
    ```
@@ -33,7 +35,7 @@ After completing this lab, you will be able to:
 1. An Eclipse launcher window will appear asking you to select a directory as workspace. Click on the **Browse…** button, browse to **/home/centos/sources/debug\_lab**, click **OK** twice
 
 ### Hardware Debugging
-#### Review the Appendix section to understand how to add ChipScope Debug bridge core. It is already added in the precompiled design
+#### Review the Appendix-I section to understand how to add ChipScope Debug bridge core. It is already added in the precompiled design
 #### Run the application
 1. In the **Assistant** tab, expand **System > Run** and select **Run Configuration**
 1. Make sure that the Arguments tab shows **../binary_container_1.xclbin** entry
@@ -204,7 +206,7 @@ Notice the Memory Buffers tab is empty as all memories are released
 
 In this lab, you used ChipScope Debug bridge and cores to perform hardware debugging. You also performed software debugging using SDx debug perspective.
 
-## Appendix
+## Appendix-I
 ### Steps to Add ChipScope Debug core      
 1. In the **Assistant** tab, expand **System > binary_container_1 > KVadd**
 1. Select **KVAdd**, right-click and select **Settings...**
@@ -229,7 +231,78 @@ In this lab, you used ChipScope Debug bridge and cores to perform hardware debug
     <i>Modifying code to stop its execution before kernel is executed to start Vivado Hardware manager</i>
     </p>
 
-
+## Appendix-II
+### Copy the necessary files from the _sources_ directory perform hardware debugging
+1. Execute the following commands to setup the environments
+   ```
+      cd ~/aws-fpga/
+      source sdaccel_setup.sh
+      source $XILINX_SDX/settings64.sh
+   ```
+1. Create a working directory and copy the necessary files
+   ```
+      mkdir debug_lab
+      cd debug_lab/
+      mkdir rundir
+      cp ~/sources/debug_lab/rtl_kernel_example/System/rtl_kernel_example.exe rundir/.
+      cp  ~/sources/debug_lab/rtl_kernel_example/xclbin/binary_container_1.awsxclbin rundir/.
+      cp ~/sources/debug_lab/rtl_kernel_example/System/sdaccel.ini rundir/.
+      cp ~/sources/debug_lab/rtl_kernel_example/System/top_sp.ltx .
+      cp -R ~/sources/debug_lab/rtl_kernel_example/src .
+   ```
+1. Change to the _rundir_, execute the application in debug mode using the following commands
+   ```
+      cd rundir
+      sudo sh
+      source /opt/xilinx/xrt/setup.sh
+      /opt/Xilinx/SDx/2018.2.op2258646/bin/xgdb --args rtl_kernel_example.exe binary_container_1.awsxclbin
+   ```
+1. At the GDB command line prompt, set a breakpoint at the main program entry, and run the application by executing the following commands
+   ```
+      break main
+      run
+   ```  
+The program will run up to the main() function entry point
+1. Set another breakpoint at line 280 and then continue executing the program 
+   ```
+      break 280
+      continue
+   ```  
+The program will execute and wait for you to hit the _Enter_ key. At this stage, you can follow hardware debugging as listed in the **Start Vivado Hardware Manager** section. _Note the path to the probes file is **/home/centos/aws-fpga/debug\_lab/**_ 
+   
+### Perform software debugging from the command line
+1. Perform all the steps except the setting up of the hardware manager, if already not done, listed in the previous section
+1. When line 280 breakpoint is encountered, enter the following commands to see the command queues and the memory buffers
+   ```
+      xprint queue
+      xprint mem
+   ```  
+Notice that both queue and memory buffers are empty  
+At this stage you can enter _next_ to execute one statement at a time and/or _continue_ to execute until the next breakpoint is encountered or the program executes the _exit()_ function  
+You can set breakpoints where desired  
+You can execute _list_ to show about 10 lines of source code
+1. Enter following commands to step over two steps and set a breapoint at 344
+   ```
+      next
+      next
+      break 344
+      continue
+      xprint mem
+      xprint queue
+   ```  
+Notice that three memory buffers are allocated but commands queue is empty
+1. Enter following commands to set a next breakpoint, continue to the breakpoint, execute two statements, examine command queues and memory buffers
+   ```
+      break 397
+      continue
+      next
+      next
+      xprint mem
+      xprint queue
+   ```  
+1. Execute _next_ and _xprint mem_. Notice memory buffers are empty
+1. Execute continue to execute till the end
+1. Type _quit_ to exit the GDB
 
 
 
