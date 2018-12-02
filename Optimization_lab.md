@@ -29,7 +29,7 @@ After completing this lab, you will be able to:
    ```
 1. Launch SDAccel by executing **sdx** in the terminal window  
 An Eclipse launcher window will appear asking to select a directory as workspace
-1. Click on the **Browse…** button, browse to **/home/centos/aws-fpga/optimization\_lab**, click **OK** twice  
+1. Click on the **Browse…** button, browse to **/home/centos/aws-fpga/optimization\_flow**, click **OK** twice  
     <p align="center">
     <img src ="./images/workspace.png"/>
     </p>
