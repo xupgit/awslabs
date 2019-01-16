@@ -37,6 +37,7 @@ After completing this lab, you will be able to:
 ### Hardware Debugging
 #### Review the Appendix-I section to understand how to add ChipScope Debug bridge core. It is already added in the precompiled design
 #### Run the application
+1. Make sure that lines 246 and 247 are not commented. If they are commented then uncomment them and save the file.
 1. In the **Assistant** tab, expand **System > Run** and select **Run Configuration**
 1. Make sure that the Arguments tab shows **../binary_container_1.xclbin** entry
 1. Make sure that the Environment tab shows **/opt/xilinx/xrt/lib** in the _LD\_LIBRARY\_PATH_ field
