@@ -1,3 +1,17 @@
+<table style="width:100%">
+  <tr>
+    <th width="100%" colspan=6><h2>XUP AWS F1 Labs</h2></th>
+  </tr>
+  <tr>
+    <td align="center"><a href="Connecting_to_AWS_lab.md">1. Connecting to AWS</a></td> 
+    <td align="center"><a href="Makefile_Flow_lab.md">2. Makefile Flow</a></td>
+    <td align="center"><a href="GUI_Flow_lab.md">3. GUI Flow</a></td>
+    <td align="center"><a href="Optimization_lab.md">4. Optimization Lab</a></td>
+    <td align="center"><a href="rtl_kernel_wizard_lab.md">5. Using the RTL Kernel Wizard</a></td>
+    <td align="center"><a href="debug_lab.md">6. Hardware/ Software Debugging</a></td>
+  </tr>
+</table>
+
 # Connecting to AWS
 
 ## Introduction

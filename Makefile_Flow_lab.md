@@ -1,3 +1,17 @@
+<table style="width:100%">
+  <tr>
+    <th width="100%" colspan=6><h2>XUP AWS F1 Labs</h2></th>
+  </tr>
+  <tr>
+    <td align="center"><a href="Connecting_to_AWS_lab.md">1. Connecting to AWS</a></td> 
+    <td align="center"><a href="Makefile_Flow_lab.md">2. Makefile Flow</a></td>
+    <td align="center"><a href="GUI_Flow_lab.md">3. GUI Flow</a></td>
+    <td align="center"><a href="Optimization_lab.md">4. Optimization Lab</a></td>
+    <td align="center"><a href="rtl_kernel_wizard_lab.md">5. Using the RTL Kernel Wizard</a></td>
+    <td align="center"><a href="debug_lab.md">6. Hardware/ Software Debugging</a></td>
+  </tr>
+</table>
+
 # Makefile Flow
 
 ## Introduction
@@ -8,18 +22,26 @@ This lab guides you through the steps involved in using a Makefile flow to build
 
 After completing this lab, you will be able to:
 
-- Run SW Emulation to verify the functionality of a design using a Makefile flow
-- Run HW Emulation to verify the functionality including kernel hardware using a Makefile flow
+- Run Software Emulation to verify the functionality of a design using a Makefile flow
+- Run Hardware Emulation to verify the functionality including kernel hardware using a Makefile flow
 - Build the full system and verify functionality in hardware on an AWS F1 instance
 
 ## Steps 
-### Source Environment Settings        
+### Setup AWS shell, SDAccel, and source the Xilinx tools
+
+The AWS shell file have already been clone from https://github.com/aws/aws-fpga and are available in ~/aws_fpga. Before an AWS F1 design can be built in SDAccel, the shell and SDAccel tools need to be configured from a setup script. This only needs to be done once for each version of the AWS shell. 
 
 1. Right-click on the Centos desktop and select **Open Terminal**
-1. Execute the following commands in the terminal window to source the Xilinx tools
+1. Execute the following commands in the terminal to setup the AWS shell and SDAccel tools. 
+
    ```
       cd ~/aws-fpga	  
-      source sdaccel_setup.sh		  
+      source sdaccel_setup.sh
+   ```
+
+1. Source the Xilinx tools
+
+   ```
       source $XILINX_SDX/settings64.sh
    ```
 1. Create a **Makefile\_flow** directory and change the working directory into it using the following commands:
@@ -34,10 +56,10 @@ After completing this lab, you will be able to:
 ### Build and Run Emulation Flows using Makefile Flow
 
 The SDAccel emulation flows allow testing, profiling and debugging of the application before deploying on F1.  
-Software emulation allow functionality of the software application to be verified.  
-Hardware emulation allow the verification of the functionality of the generated logic generated for the FPGA and the application working together.
+Software emulation allows functionality of the software application to be verified.
+Hardware emulation allows verification of the functionality of the generated logic generated for the FPGA, and the software application, together.
 
-1. Execute the following commands in the terminal to build and run the *SW emulation* flow for the SDAccel &#39;hello world&#39; example:
+1. Execute the following commands in the terminal to build and run the *Software Emulation* flow for the SDAccel &#39;hello world&#39; example:
     ```
       cd helloworld_ocl
       make clean
@@ -104,7 +126,7 @@ Hardware emulation allow the verification of the functionality of the generated 
 1. Enter **exit** in the terminal window to exit out of _sudo shell_  
 ## Conclusion
 
-In this lab, you used a Makefile flow to perform SW and HW emulations. You then ran the application on F1 and validated the functionality.
+In this lab, you used a Makefile flow to perform SW and Hardware Emulations. You then ran the application on F1 and validated the functionality.
 
 ---------------------------------------
 
@@ -126,3 +148,9 @@ Start the next lab: <a href="GUI_Flow_lab.md">3. GUI Flow lab</a>
 This will build the project under the **helloworld\_ocl** directory. The built project will include executable helloworld file along with vector_addition.hw.xilinx_aws-vu9p-f1-04261818_dynamic_5_0.xclbin file under the sub-folder **xclbin**  
 This step takes about two hours.  
 **Once the full system is built, you can create an AFI by following the steps listed <a href="Creating_AFI.md">here</a>**
+
+---------------------------------------
+
+[3. GUI Flow](./GUI_Flow_lab.md)
+
+---------------------------------------
