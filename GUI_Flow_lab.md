@@ -1,31 +1,47 @@
+<table style="width:100%">
+  <tr>
+    <th width="100%" colspan=6><h2>XUP AWS F1 Labs</h2></th>
+  </tr>
+  <tr>
+    <td align="center"><a href="Connecting_to_AWS_lab.md">1. Connecting to AWS</a></td> 
+    <td align="center"><a href="Makefile_Flow_lab.md">2. Makefile Flow</a></td>
+    <td align="center"><a href="GUI_Flow_lab.md">3. GUI Flow</a></td>
+    <td align="center"><a href="Optimization_lab.md">4. Optimization Lab</a></td>
+    <td align="center"><a href="rtl_kernel_wizard_lab.md">5. Using the RTL Kernel Wizard</a></td>
+    <td align="center"><a href="debug_lab.md">6. Hardware/ Software Debugging</a></td>
+  </tr>
+</table>
+
 # GUI Flow
 
 ## Introduction
 
-This lab guides you through the steps involved in using a GUI flow to create an SDAccel project. After creating a project you will run SW and hardware emulations to verify the functionality. You will then use an AWS F1 instance to validate the design, and perform profile and application timeline analysis.
+This lab guides you through the steps involved in using the SDx GUI to create an SDAccel project. After creating a project you will run software and hardware emulation to verify the functionality. You will then use an AWS F1 instance to validate the design, and perform profile and application timeline analysis.
 
 ## Objectives
 
 After completing this lab, you will be able to:
 
 - Create an SDAccel project through GUI flow
-- Run SW Emulation to verify the functionality of a design using a GUI flow
-- Run HW Emulation to verify the functionality of a design using a GUI flow
+- Run Software Emulation to verify the functionality of a design
+- Run Emulation Emulation to verify the functionality of a design
 - Verify functionality in hardware on an AWS F1 instance
 - Build system for hardware execution, and perform profile and application timeline analysis on the AWS F1 instance
 
 
 ## Steps
-### Create an SDAccel Project        
-1. Execute the following commands, if it is not already done, in a terminal window to source the required Xilinx tools:
+### Create an SDAccel Project
+1. Source the Xilinx tools:
    ```
-      cd ~/aws-fpga		  
-      source sdaccel_setup.sh		  
-      source $XILINX_SDX/settings64.sh	  
+      source $XILINX_SDX/settings64.sh
+      source /opt/xilinx/xrt/setup.sh
    ```
+   (This step assume SDAccel has already been set up from the previous lab)
+   
 1. Execute the following commands to create a working directory:
    ```
-      mkdir GUI_flow	  
+      cd ~/aws-fpga
+      mkdir GUI_flow
       cd GUI_flow
    ```
 1. Launch SDAccel by executing **sdx** in the terminal window  
@@ -76,18 +92,24 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
     <i>The Project IDE</i>
     </p>
 
-### Perform SW Emulation
-1. Click on the _Add Hardware Function_ button icon (![alt tag](./images/Fig-hw_button.png)) in the **Hardware Functions** tab to see functions defined in the design. Since there is only one function and it is already included, you won't see any listing  
-1. Notice the _kml\_vadd_ function is the only function in the design and is already marked to be accelerated
+### Perform Software Emulation
+1. Click on the _Add Hardware Function_ button icon (![alt tag](./images/Fig-hw_button.png)) in the **Hardware Functions** tab to see functions defined in the design. From here, you can select software functions to be implemented in hardware. Since there is only one software function in this design, and it is already included, you won't see any listing
+1. Notice the _krl\_vadd_ function has already been included as a hardware function
 1. Make sure the **project.sdx** under _gui\_flow\_example_ in the **Project Explorer** tab is selected
-1. Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-SW** or click on the drop-down button of _Active build configuration_ and select **Emulation-SW**
+1. Select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-SW** or click on the drop-down button of _Active build configuration_ and select **Emulation-SW**
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-6.png"/>
     </p>
     <p align = "center">
     <i>Selecting SW Emulation build configuration</i>
     </p>
-1. Either select **Project &gt; Build Project** or click on the build (![alt tag](./images/Fig-build.png)) button  
+1. Right click on the gui_flow_example project, and select **C/C++ Build Settings**
+1. Under **SDx XOCC Kernel Linker > Miscellaneous** add the folling flag and click *OK* twice to go back to the main window:
+   `--xp param:compiler.useHlsGpp=1`
+   
+![](./images/makefile_lab/linker_flag.png)
+
+1. Select **Project &gt; Build Project** or click on the build (![alt tag](./images/Fig-build.png)) button  
     This will build the project including gui\_flow\_example.exe file under the Emulation-SW directory
 1. Run the application by clicking the Run button (![alt tag](./images/Fig-run.png)). 
     The application will be run and the output will be displayed in the Console tab
@@ -98,12 +120,12 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
     <i>SW Emulation run output</i>
     </p>
 
-### Perform HW Emulation
-**The SW Emulation flow checks functional correctness of the software application, but it does not guarantee the correctness of the design on the FPGA target. The Hardware (HW) Emulation flow can be used to verify the functionality of the generated logic. This flow invokes the hardware simulator in the SDAccel environment. As a consequence, the HW Emulation flow will take longer to run than the SW Emulation flow.**
+### Perform Hardware Emulation
+**The Software Emulation flow checks functional correctness of the software application, but it does not guarantee the correctness of the design on the FPGA target. The Hardware (HW) Emulation flow can be used to verify the functionality of the generated logic. This flow invokes the hardware simulator in the SDAccel environment. As a consequence, the HW Emulation flow will take longer to run than the SW Emulation flow.**
 
-**The HW Emulation flow is not cycle accurate, but provides more detailed profiling information than software emulation and can be used to do some analysis and optimization of the performance of the application.**
+**The Hardware Emulation flow is not cycle accurate, but provides more detailed profiling information than software emulatio. It can be used to do some analysis and optimization of the performance of the application.**
 
-1. Either select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** or click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
+1. Select **Project &gt; Build Configurations &gt; Set Active &gt; Emulation-HW** or click on the drop-down button of _Active build configuration_ and select **Emulation-HW**
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-8.png"/>
     </p>
@@ -146,14 +168,14 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
     <p align = "center">
     <i>The Assistant tab content</i>
     </p>
-    The window will open showing the Synthesis report for the **krnl\_vadd** accelerator.  It includes the target device information
+    The window will open showing the Synthesis report for the **krnl_vadd** accelerator.  It includes the target device information
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-12.png"/>
     </p>
     <p align = "center">
     <i>HLS synthesis report for the krnl_vadd accelerator</i>
     </p>
-1. Scroll down the window and observe the timing, latency, and loop performance results. Observe that the target frequency is 250 MHz (4 ns period) and achieved period is 2.92 ns indicating that the timing has been met. 
+1. Scroll down the window and observe the timing, latency, and loop performance results. Observe that the target clock period is 4.00ns (250 MHz) and the estimated actual clock period is 2.92 ns, indicating that the timing has been met. 
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-13.png"/>
     </p>
@@ -168,7 +190,7 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
     <i>Resource utilization</i>
     </p>
 1. Scrolling down further shows the Interface summary indicating various ports, width, protocol that they are part of, type of object, and parameter type they belong to.  
-    As can be seen, there are three interfaces being used: control, s\_axi, and m\_axi. The s\_axi is 32-bit wide data, control provides necessary handshaking signals, and m\_axi has 32-bit data. The m\_axi is connected to gmem, the global memory which is DDR. The DDR memory uses 64-bit address.
+    Three interfaces are being used: a control interface, an AXI slave, and AXI master. The control interface (*ap_ctrl_hs*) provides necessary handshaking signals for the kernel. The AXI slave (*s\_axi*) data width is 32-bits. The AXI master (*m\_axi*) data width is also 32-bits. In the system, *m\_axi* is connected to *gmem*, the global memory interface which is the DDR controller. The DDR memory uses 64-bit addressing.
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-15-1.png"/>  
     <img src ="./images/guiflow_lab/FigGUIflowLab-15-2.png"/>  
@@ -212,7 +234,7 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
     </p>
 
 ### Review the System Estimate report
-1. Double-click on the **System Estimate** entry under the **Emulation-HW** in the **Assistant** tab
+1. Double-click on the **System Estimate** entry under the **Emulation-HW > binary_container_1 > krnl_vadd** in the **Assistant** tab
 1. The report shows the estimated frequency and the resource utilization for the given kernel (krnl\_vadd)
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-20.png"/>
@@ -222,10 +244,10 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
     </p>
 
 ### Setup for System Build
-**Since hardware bitstream generation takes over two hours, you will go through basic steps involved in setting up System build in this section so you can perform profiling and application timeline analysis on AWS using the already pre-generated awsxclbin.**
+**As hardware generation (.awsxclbin) takes some time, in this section you will set up the system build so you can perform profiling and application timeline analysis on an AWS F1 using a pre-generated awsxclbin.**
 
-1. Either select **Project &gt; Build Configurations &gt; Set Active &gt; System** or click on the drop-down button of _Active build configuration_ and select **System**
-1. Click on the drop-down button of Hardware optimization and select -Oquick option which will make compilation relatively faster
+1. Select **Project &gt; Build Configurations &gt; Set Active &gt; System** or click on the drop-down button of _Active build configuration_ and select **System**
+1. Click on the *Hardware optimization* drop-down button and select ** Reduce compile time (-Oquick)** option 
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-22.png"/>
     </p>
@@ -240,10 +262,10 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
     <p align = "center">
     <i>Selecting System build configuration and setting compilation option</i>
     </p>
-1. Normally, you would build the project, but since it will take long time **you will NOT BUILD it here**
+1. Normally, you would build the project, but as it take some time to compile **you will NOT BUILD it now** and a precompiled version will be used. 
 
 ### Run the Application on F1
-**Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality.**  
+** Use the precompiled solution directory to verify the functionality.**  
 
 1. Change to the solution directory by executing the following command  
    ```
@@ -265,8 +287,6 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
 1. It will also create two csv files; one for profile and another application timeline analysis
 1. Open another terminal window (_non-sh_), source the environment settings, and execute the following two commands to create \*.xprf (Xilinx profile), and timeline.wdb and timeline.wcfg files
    ```
-      cd ~/aws-fpga		  
-      source sdaccel_setup.sh		  
       source $XILINX_SDX/settings64.sh	  
       cd /home/centos/sources/gui_flow_solution
       sdx_analyze profile --input sdaccel_profile_summary.csv -o profile
@@ -277,10 +297,9 @@ Note the _aws-vu9p-f1-04261818_ under the board column is displayed
 **You will use the generated timeline and profile files to perform the analysis**
 
 1. Select **File > Open File...**
-1. Browse to **/home/centos/sources/gui_flow_solution** and select **profile.xprf** and **timeline.wdb** and click **OK**
-The _Waveform and Profile Summary tabs_ will open. In the Waveform tab, notice that the actual activities starts after 4,960 ms since the FPGA loading takes time
-1. Run the application again from the command line of the **sh** terminal window and observe the output  
-It indicates the AFI is already loaded and so it is skipping the loading
+1. Browse to **/home/centos/sources/gui_flow_solution** and select **profile.xprf** and **timeline.wdb** and click **OK**. 
+The _Waveform and Profile Summary tabs_ will open. In the Waveform tab, notice activity doens't start immediately as the FPGA loading takes time
+1. Run the application again from the command line of the **sh** terminal window and observe the output. As the AFI is already loaded it is not reloaded. 
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-21-1.png"/>
     </p>
@@ -319,7 +338,7 @@ Notice that the activity starts at around 500 ms as no AFI loading took place.
     <p align = "center">
     <i>Timeline graph showing various activities in various region of the system</i>
     </p>
-1. Using left-button mouse click, select region around 1.150 ms to 1.154 ms region to zoom in into the view
+1. Using the left-button mouse click and drag right to zoom into the region of activity. 
     <p align="center">
     <img src ="./images/guiflow_lab/FigGUIflowLab-31.png"/>
     </p>
@@ -329,13 +348,11 @@ Notice that the activity starts at around 500 ms as no AFI loading took place.
 
 ## Conclusion 
 
-In this lab, you used SDAccel IDE to create a project using one of the application templates. You then ran the design using the software  and hardware emulation flows, and reviewed the reports. You also read through the steps to generate the AFI. Since the system build and AFI creation takes over two hours, you used the provided solution to download the application and kernel on the F1 instance and validated the functionality.
+In this lab, you used SDAccel to create a project using one of the application templates. You then ran the design using the software and hardware emulation flows, and reviewed the reports. You also read through the steps to generate the AFI. Since the system build and AFI creation takes some time, you used a precompiled solution to download the application and kernel on the F1 instance and validated the functionality.
 
 ---------------------------------------
 
-<p align="center"><b>
-Start the next lab: <a href="Optimization_lab.md">4. Optimization Lab</a>
-</b></p>
+[4. Optimization Lab](./Optimization_lab.md)
 
 ---------------------------------------
 

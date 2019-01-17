@@ -1,8 +1,22 @@
+<table style="width:100%">
+  <tr>
+    <th width="100%" colspan=6><h2>XUP AWS F1 Labs</h2></th>
+  </tr>
+  <tr>
+    <td align="center"><a href="Connecting_to_AWS_lab.md">1. Connecting to AWS</a></td> 
+    <td align="center"><a href="Makefile_Flow_lab.md">2. Makefile Flow</a></td>
+    <td align="center"><a href="GUI_Flow_lab.md">3. GUI Flow</a></td>
+    <td align="center"><a href="Optimization_lab.md">4. Optimization Lab</a></td>
+    <td align="center"><a href="rtl_kernel_wizard_lab.md">5. Using the RTL Kernel Wizard</a></td>
+    <td align="center"><a href="debug_lab.md">6. Hardware/ Software Debugging</a></td>
+  </tr>
+</table>
+
 # Optimization Lab
 
 ## Introduction
 
-This lab guides you through the steps involved in creating a project and adding a kernel function. After creating a project you will run software and hardware emulations to verify the functionality, analyze various generated reports and then apply optimization techniques both on host and kernel side to improve throughput and data transfer rate.
+This lab guides you through the steps involved in creating a project and adding a kernel function. After creating a project you will run software and hardware emulation to verify the functionality, analyze various generated reports and then apply optimization techniques on both the host side and kernel side to improve throughput and the data transfer rate.
 
 ## Objectives
 
@@ -16,41 +30,22 @@ After completing this lab, you will be able to:
 
 ## Steps 
 ### Create an SDAccel Project
-1. Execute the following commands, if it is not already done, in a terminal window to source the required Xilinx tools:
+1. Source the Xilinx tools:
    ```
-      cd ~/aws-fpga		  
-      source sdaccel_setup.sh		  
-      source $XILINX_SDX/settings64.sh	  
+      source $XILINX_SDX/settings64.sh
+      source /opt/xilinx/xrt/setup.sh
    ```
 1. Execute the following commands in a terminal window to create a working directory:
    ```
-      mkdir optimization_flow	  
+      cd ~/aws-fpga
+      mkdir optimization_flow
       cd optimization_flow
    ```
 1. Launch SDAccel by executing **sdx** in the terminal window  
 An Eclipse launcher window will appear asking to select a directory as workspace
 1. Click on the **Browse…** button, browse to **/home/centos/aws-fpga/optimization\_flow**, click **OK** twice  
-    <p align="center">
-    <img src ="./images/workspace.png"/>
-    </p>
-    <p align = "center">
-    <i>Selecting a workspace</i>
-    </p>
-    The Xilinx SDx IDE window will be displayed
-    <p align="center">
-    <img src ="./images/SDX_IDE.png"/>
-    </p>
-    <p align = "center">
-    <i>The SDx IDE window</i>
-    </p>
 1. Click on the **Add Custom Platform** link on the _Welcome_ page
-1. Click on the **Add Custom Platform** button, browse to **/home/centos/aws-fpga/SDAccel/aws\_platfom/xilinx\_aws-vu9p-f1-04261818\_dynamic\_5\_0**, and click **OK**
-    <p align="center">
-    <img src ="./images/FigPlatform.png"/>
-    </p>
-    <p align = "center">
-    <i>Hardware platform selected</i>
-    </p>
+1. Click on the **Add Custom Platform** button as before, browse to **/home/centos/aws-fpga/SDAccel/aws\_platfom/xilinx\_aws-vu9p-f1-04261818\_dynamic\_5\_0**, and click **OK**
 1. Click **Apply** and then click **OK**
 1. Click on the **Create SDx Project** link on the _Welcome_ page
 1. Click **Next** 
@@ -65,13 +60,6 @@ Note the aws-vu9p-f1-04261818 board is displayed as the hardware platform
     <p align = "center">
     <i>Selecting an application template</i>
     </p>
-The project IDE will be displayed with six main windows: Project Explorer, Project Settings, Reports, Outline, multi-tab console, and Emulation Console.
-    <p align="center">
-    <img src ="./images/optimization_lab/FigOptimizationLab-5.png"/>
-    </p>
-    <p align = "center">
-    <i>The Project IDE</i>
-    </p>
 
 ### Import the provided two source files from the /home/centos/sources/optimization\_lab folder to the project
 1. Right-click on the **src** folder in the _Project Explorer_ and select **Import…**
@@ -80,8 +68,8 @@ The project IDE will be displayed with six main windows: Project Explorer, Proje
 1. Click **Finish**
 1. Expand the **src** folder in the _Project Explorer_ and note the two added files  
 ### Select the function(s) that needs to be accelerated
-1. Click on the _Add Hardware Function_ button icon (![alt tag](./images/Fig-hw_button.png)) in the **Hardware Functions** tab to see possible functions which may be accelerated  
-1. Select _kernl\_idct_ function and click **OK**
+1. Click on the _Add Hardware Function_ button icon (![alt tag](./images/Fig-hw_button.png)) in the **Hardware Functions** tab to see functions which can be selected for implementation in hardware
+1. Select _krnl\_idct_ function and click **OK**
     <p align="center">
     <img src ="./images/optimization_lab/FigOptimizationLab-6.png"/>
     </p>
@@ -135,7 +123,8 @@ Note: all objects accessed through a **clCreate..**. function call should be rel
 1. In the Project Explorer pane, right-click the project **optimization\_lab\_example** and select the **C/C++ Settings**
 1. Select **C/C++ Build** &gt; **Settings** in the left pane
 1. Select the **Miscellaneous** under **SDx XOCC Kernel Linker**
-1. Using the gedit editor, open the file **xocc\_linker\_flag.txt** from the **/home/centos/sources/optimization\_lab/** directory, copy --sp krnl\_idct_1.m\_axi\_gmem:bank0 --sp krnl\_idct\_1.m\_axi\_gmem1:bank0 --sp krnl\_idct\_1.m\_axi\_gmem2:bank1 and paste it in the **Other flags** field. Make sure that there no control characters at the end of the string
+1. If you have this webpage open in the AWS F1 instance, copy the following line and paste it in the **Other flags** field. Make sure that there no control characters at the end of the string:
+`--sp krnl\_idct_1.m\_axi\_gmem:bank0 --sp krnl\_idct\_1.m\_axi\_gmem1:bank0 --sp krnl\_idct\_1.m\_axi\_gmem2:bank1
     <p align="center">
     <img src ="./images/optimization_lab/FigOptimizationLab-8.png"/>
     </p>
@@ -361,16 +350,13 @@ Observe how **software pipelining** enables overlapping of data transfers and ke
 Note: system tasks might slow down communication between the application and the hardware simulation, impacting on the measured performance results. The effect of software pipelining is considerably higher when running on the actual hardware
 
 ###  Run the Application on F1
-**Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality**  
+**Since the System build and AFI availability takes some time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality**  
 
-1. Open a new terminal window, source sdaccel environment settings, and change to the solution directory by executing the following commands  
+1. Open a new terminal window, and change to the solution directory
    ```
-     cd ~/aws-fpga		  
-     source sdaccel_setup.sh		  
-     source $XILINX_SDX/settings64.sh	  
      cd /home/centos/sources/optimization_lab_solution
    ```  
-1. Run the following commands to load the AFI and execute the application to verify the functionality
+1. Load the AFI and execute the application to verify the functionality
    ```
       sudo sh
       source /opt/xilinx/xrt/setup.sh

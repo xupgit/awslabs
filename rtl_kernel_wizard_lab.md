@@ -1,4 +1,18 @@
-# Using RTL Kernel Wizard
+<table style="width:100%">
+  <tr>
+    <th width="100%" colspan=6><h2>XUP AWS F1 Labs</h2></th>
+  </tr>
+  <tr>
+    <td align="center"><a href="Connecting_to_AWS_lab.md">1. Connecting to AWS</a></td> 
+    <td align="center"><a href="Makefile_Flow_lab.md">2. Makefile Flow</a></td>
+    <td align="center"><a href="GUI_Flow_lab.md">3. GUI Flow</a></td>
+    <td align="center"><a href="Optimization_lab.md">4. Optimization Lab</a></td>
+    <td align="center"><a href="rtl_kernel_wizard_lab.md">5. Using the RTL Kernel Wizard</a></td>
+    <td align="center"><a href="debug_lab.md">6. Hardware/ Software Debugging</a></td>
+  </tr>
+</table>
+
+# Using the RTL Kernel Wizard
 
 ## Introduction
 
@@ -16,9 +30,8 @@ After completing this lab, you will be able to:
 ### Create an SDAccel Project
 1. Execute the following commands in a terminal window to source the required environment settings:
    ```
-      cd ~/aws-fpga
-      source sdaccel_setup.sh
       source $XILINX_SDX/settings64.sh
+      source /opt/xilinx/xrt/setup.sh
    ```
 1. Execute the following commands in a terminal window to create a working directory:  
    ```
@@ -34,21 +47,10 @@ An Eclipse launcher window will appear asking to select a directory as workspace
     <p align = "center">
     <i>Selecting a workspace</i>
     </p>
-    The Xilinx SDx IDE window will be displayed
-    <p align="center">
-    <img src ="./images/SDX_IDE.png"/>
-    </p>
-    <p align = "center">
-    <i>The SDx IDE window</i>
-    </p>
+
 1. Click on the **Add Custom Platform** link on the _Welcome_ page
 1. Click on the **Add Custom Platform** button, browse to **/home/centos/aws-fpga/SDAccel/aws\_platfom/xilinx\_aws-vu9p-f1-04261818\_dynamic\_5\_0**, and click **OK**
-    <p align="center">
-    <img src ="./images/FigPlatform.png"/>
-    </p>
-    <p align = "center">
-    <i>Hardware platform selected</i>
-    </p>
+
 1. Click **Apply** and then click **OK**
 1. Click on the **Create SDx Project** link on the _Welcome_ page
 1. Click **Next** 
@@ -57,12 +59,6 @@ Note the aws-vu9p-f1-04261818 board is displayed as the hardware platform
 1. Click **Next**
 1. Click **Next** with Linux on x86 as the System Configuration and OpenCL as the Runtime options
 1. Select **Empty Application** from the _Available Templates_ pane and click **Finish**
-    <p align="center">
-    <img src ="./images/FigEmptyProjectTemplate.png"/>
-    </p>
-    <p align = "center">
-    <i>Selecting an application template</i>
-    </p>
 
 ### Create RTL\_Kernel Project using RTL Kernel Wizard      
 1. Make sure the **project.sdx** under _rtl\_kernel\_example_ in the **Project Explorer** tab is selected
@@ -83,7 +79,7 @@ Note that the Create RTL Kernel Wizard will be invoked displaying the Welcome sc
     <i>Setting general settings including name and number of clocks</i>
     </p>
 1. Click **Next**
-1. Click **Next** with _Number of scalar kernel input arguments_ default value being **1** and the _Argument type_ as **unit**
+1. Leave _Number of scalar kernel input arguments_ set to the default value of **1** and the _Argument type_ as **unit** and click **Next**
     <p align="center">
     <img src ="./images/rtlkernel_lab/FigRTLKernelLab-6.png"/>
     </p>
@@ -91,7 +87,7 @@ Note that the Create RTL Kernel Wizard will be invoked displaying the Welcome sc
     <i>Selecting number of scalar arguments</i>
     </p>
 1. We will have three arguments to the kernel (2 input and 1 output) which will be passed through Global Memory. Set _Number of AXI master interfaces_ to be **3**
-1. Keep the width of each AXI master data width to **64** (note this is specified in bytes so this will give a width of 512 bits), name **A** as the argument name to m00\_axi, **B** to m01\_axi, and **Res** to m02\_axi
+1. Keep the width of each AXI master data width to **64** (note this is specified in bytes so this will give a width of 512 bits for each interface), name **A** as the argument name to m00\_axi, **B** to m01\_axi, and **Res** to m02\_axi
     <p align="center">
     <img src ="./images/rtlkernel_lab/FigRTLKernelLab-7.png"/>
     </p>
@@ -202,7 +198,7 @@ This will build the project including rtl\_kernel\_example.exe file under the Em
     </p>  
 1. Click on the **Automatically add binary container(s) to arguments** check box
 1. Click on the **Environment** tab, and change the _LD\_LIBRARY\_PATH_ variable setting to **/opt/xilinx/xrt/lib** and click **OK**
-1. click **Apply**, and then click **Run** to run the application
+1. Click **Apply**, and then click **Run** to run the application
     <p align="center">
     <img src ="./images/rtlkernel_lab/FigRTLKernelLab-19.png"/>
     </p>
@@ -224,8 +220,12 @@ This will build the project including rtl\_kernel\_example.exe file under the Em
     <i>Timeline graph showing various activities in various region of the system</i>
     </p>  
 
-###  Run the Application on F1        
-**Since the System build and AFI availability takes considerable amount of time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality**  
+###  OPTIONAL: Run the Application on F1        
+**Since the System build and AFI availability takes some time, a precompiled version is provided. Use the precompiled solution directory to verify the functionality**  
+
+This step is optional and can be skipped, but if you want to run the design on AWS F1, you can do so using the provided precompiled solution. 
+
+You can also build the bitstream and xclbin yourself after the workshop by following the appendix (below).
 
 1. Change to the solution directory by executing the following command  
    ```
@@ -250,7 +250,9 @@ This will build the project including rtl\_kernel\_example.exe file under the Em
 
 ## Conclusion
 
-In this lab, you used the RTL Kernel wizard to create a sample adder application. You saw that the wizard creates an RTL IP with the specified number of AXI master ports. You performed HW emulation and analyzed the application timeline. You finally ran the application on an AWS F1 instance and validated the functionality.
+In this lab, you used the RTL Kernel wizard to create a sample adder application. You saw that the wizard creates an RTL IP with the specified number of AXI master ports. You performed HW emulation and analyzed the application timeline. 
+
+Optional: You ran the application on an AWS F1 instance.
 
 ---------------------------------------
 

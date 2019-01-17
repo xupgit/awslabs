@@ -1,8 +1,22 @@
+<table style="width:100%">
+  <tr>
+    <th width="100%" colspan=6><h2>XUP AWS F1 Labs</h2></th>
+  </tr>
+  <tr>
+    <td align="center"><a href="Connecting_to_AWS_lab.md">1. Connecting to AWS</a></td> 
+    <td align="center"><a href="Makefile_Flow_lab.md">2. Makefile Flow</a></td>
+    <td align="center"><a href="GUI_Flow_lab.md">3. GUI Flow</a></td>
+    <td align="center"><a href="Optimization_lab.md">4. Optimization Lab</a></td>
+    <td align="center"><a href="rtl_kernel_wizard_lab.md">5. Using the RTL Kernel Wizard</a></td>
+    <td align="center"><a href="debug_lab.md">6. Hardware/ Software Debugging</a></td>
+  </tr>
+</table>
+
 # Hardware/Software Debugging
 
 ## Introduction
 
-This lab is continuation of the previous (**<a href="rtl_kernel_wizard_lab.md">RTL-Kernel Wizard Lab</a>**) lab. You will add ChipScope cores to monitor the activities taking place at the kernel interface level and perform software debugging using SDx debug capabilities.
+This lab is a continuation of the previous (**<a href="rtl_kernel_wizard_lab.md">RTL-Kernel Wizard Lab</a>**) lab. You will add ChipScope cores to monitor the activities taking place at the kernel interface level and perform software debugging using SDx debug capabilities.
 
 ## Objectives
 
@@ -16,29 +30,25 @@ After completing this lab, you will be able to:
 #### Please refer to the Appendix-II if you either want to run the lab in the command line mode or want to run the lab on your personally created instance (i.e. non-xilinx instance)
 
 ### Open an SDAccel Project
-1. Execute the following commands, if not already done, in a terminal window to source the required environment settings:
-   ```
-      cd ~/aws-fpga
-      source sdaccel_setup.sh
-      source $XILINX_SDX/settings64.sh
-   ```
-1. Execute the following commands in a terminal window to change to a working directory where the precompiled project is provided:  
+
+1. Change to the working directory where the precompiled project is provided:
    ```
       cd /home/centos/sources/debug_lab
    ```
-1. Since we will be executing application in System configuration mode, we need to start the SDx program as being **su**. Execute the following commands to launch **sdx**
+1. Since we will be executing application in System configuration mode, we need to start the SDx program with **su**. Execute the following commands to launch **sdx**
    ```
       sudo sh
+      export XILINX_SDX="/opt/Xilinx/SDx/2018.2.op2258646"
+      source $XILINX_SDX/settings64.sh
       source /opt/xilinx/xrt/setup.sh
-      /opt/Xilinx/SDx/2018.2.op2258646/bin/sdx
+      sdx
    ```  
 1. An Eclipse launcher window will appear asking you to select a directory as workspace. Click on the **Browse…** button, browse to **/home/centos/sources/debug\_lab**, click **OK** twice
 
 ### Hardware Debugging
-#### Review the Appendix-I section to understand how to add ChipScope Debug bridge core. It is already added in the precompiled design
+#### Review the Appendix-I section to understand how to add the ChipScope Debug bridge core. It is already added in the precompiled design
 #### Run the application
-1. Make sure that lines 246 and 247 are not commented. If they are commented then uncomment them and save the file.
-1. In the **Assistant** tab, expand **System > Run** and select **Run Configuration**
+1. From the **Run** menu, select **Run Configurations**
 1. Make sure that the Arguments tab shows **../binary_container_1.xclbin** entry
 1. Make sure that the Environment tab shows **/opt/xilinx/xrt/lib** in the _LD\_LIBRARY\_PATH_ field
 1. Click **Run**
@@ -50,7 +60,7 @@ The host application will start executing, loading bitstream, and pausing for th
     <i>Paused execution</i>
     </p>
 ### Start Vivado Hardware Manager
-1. In another terminal window, start virtual jtag connection using following two commands. The Virtual JTAG XVC Server will start listening to TCP port 10201
+1. In another terminal window, start a virtual jtag connection using following two commands. The Virtual JTAG XVC Server will start listening to TCP port 10201
    ```
       source $XILINX_SDX/settings64.sh
       sudo fpga-start-virtual-jtag -P 10201 -S 0
@@ -62,6 +72,10 @@ The host application will start executing, loading bitstream, and pausing for th
     <i>Starting Virtual JTAG</i>
     </p>
 1. Start Vivado from another terminal window from the debug_lab directory
+   ```
+      cd /home/centos/sources/debug_lab
+      vivado
+   ```
 1. Click on **Open Hardware Manager** link
 1. Click **Open Target > Open New Target**
 1. Click **Next**
@@ -89,9 +103,9 @@ The Vivado Hardware Manager will open showing _Hardware_, _Waveform_, _Settings-
     <p align = "center">
     <i>Hardware Manager</i>
     </p>  
-1. In the _Hardware Device Properties_ view, click on browse button of the **Probes file**, browse to **/home/centos/sources/debug_lab/rtl_kernel_example/System** folder, select **top_sp.ltx** entry and click **OK**  
+1. In the _Hardware Device Properties_ view, click on the browse button beside **Probes file**, browse to **/home/centos/sources/debug_lab/rtl_kernel_example/System** , select **top_sp.ltx** entry and click **OK**  
 Notice four (Slot_0 to Slot_3) probes are filled in the Waveform window
-1. Click on the _Run Trigger immediate_ button and observe the waveform window is filled indicating the four channels are in _Inactive_ state
+1. Click on the _Run Trigger immediate_ button [](./images/debug_lab/run_trigger_immediate.png) and observe the waveform window is filled indicating the four channels are in _Inactive_ state
      <p align="center">
     <img src ="./images/debug_lab/FigDebugLab-8.png"/>
     </p>
@@ -112,7 +126,7 @@ Notice four (Slot_0 to Slot_3) probes are filled in the Waveform window
     <p align = "center">
     <i>Setting trigger condition</i>
     </p>  
-1. Click on the Run button and observe hw_ila_1 probe is waiting for the trigger condition to occur
+1. Click on the _Run trigger_ button [](./images/debug_lab/trigger_button.png)and observe the _hw_ila_1_ probe is waiting for the trigger condition to occur
      <p align="center">
     <img src ="./images/debug_lab/FigDebugLab-11.png"/>
     </p>
@@ -161,11 +175,11 @@ At this point, three buffers would have been created
 1. Click on the **Resume** button or press **F8**  
 The execution will resume and stop at the breakpoint  
 At this point you can go to various tabs and see the contents in the current scope  
-Two of the important features of SDx debugging is examining command queues and memory buffers as the program execution progresses
+SDx debug allows command queues and memory buffers to be examined as the program execution progresses
 1. Click on the **Step Over** button or press **F6**  
 The execution will progress one statement at a time
 1. Continue pressing **F6** until you reach line number _344_ at which point kernel would have finished execution
-1. Click on the _Suspend : Step_ entry in the **Debug** tab and then select **Memory Buffers** tab  
+1. Select the **Memory Buffers** tab  
 Notice that three buffers are allocated, their IDs, DDR memory address, and sizes
     <p align="center">
     <img src ="./images/debug_lab/FigDebugLab-15.png"/>
