@@ -1,6 +1,6 @@
 # Creating AFI Image after Building Full System
 
-This document guides you through the steps involved in creating an AFI which can be run AWS EC2 F1 instance to verify the deign works in hardware. It assumes that a full system is built which consists of an host application and xclbin. 
+This document guides you through the steps involved in creating an AFI which can be run AWS EC2 F1 instance to verify the design works in hardware. It assumes that a full system is built which consists of an host application and xclbin. 
 
 ### Create an Amazon FPGA Image (AFI)
 
